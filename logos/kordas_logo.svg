@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 140" width="680" height="140">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&amp;display=swap');
+      .name { font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 46px; fill: #0f172a; }
+      .tech { font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 46px; fill: #94a3b8; }
+      .tag  { font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 12px; fill: #94a3b8; letter-spacing: 1.5px; }
+    </style>
+  </defs>
+
+  <!-- ICON: Data bars forming abstract K (V4 style) -->
+  <!-- Main stem -->
+  <rect x="8" y="16" width="8" height="108" rx="4" fill="#0f172a"/>
+
+  <!-- Upper arms (getting shorter → K diagonal up-right) -->
+  <rect x="20" y="16" width="8" height="48"  rx="4" fill="#3b82f6"/>
+  <rect x="32" y="16" width="8" height="32"  rx="4" fill="#60a5fa"/>
+  <rect x="44" y="16" width="8" height="18"  rx="4" fill="#bfdbfe"/>
+
+  <!-- Lower arms (getting shorter → K diagonal down-right) -->
+  <rect x="20" y="76" width="8" height="48"  rx="4" fill="#3b82f6"/>
+  <rect x="32" y="92" width="8" height="32"  rx="4" fill="#60a5fa"/>
+  <rect x="44" y="106" width="8" height="18" rx="4" fill="#bfdbfe"/>
+
+  <!-- WORDMARK -->
+  <text x="82" y="82" class="name">KORDAS</text>
+
+  <!-- Thin vertical separator -->
+  <rect x="317" y="48" width="1.2" height="38" rx="0.6" fill="#cbd5e1"/>
+
+  <!-- TECHNOLOGIES -->
+  <text x="330" y="82" class="tech">TECHNOLOGIES</text>
+
+  <!-- Blue accent underline -->
+  <rect x="82" y="96" width="44" height="3" rx="1.5" fill="#3b82f6"/>
+
+  <!-- Tagline -->
+  <text x="82" y="120" class="tag">AI  ·  RAPID PROTOTYPING  ·  IoT</text>
+</svg>

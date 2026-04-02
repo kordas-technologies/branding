@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 140" width="680" height="140">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&amp;display=swap');
+      .name { font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 46px; fill: #f1f5f9; }
+      .tech { font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif; font-weight: 300; font-size: 46px; fill: #64748b; }
+      .tag  { font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 12px; fill: #64748b; letter-spacing: 1.5px; }
+    </style>
+  </defs>
+
+  <!-- Dark variant — for dark backgrounds, headers, etc. -->
+
+  <!-- ICON -->
+  <rect x="8" y="16" width="8" height="108" rx="4" fill="#e2e8f0"/>
+  <rect x="20" y="16" width="8" height="48"  rx="4" fill="#3b82f6"/>
+  <rect x="32" y="16" width="8" height="32"  rx="4" fill="#60a5fa"/>
+  <rect x="44" y="16" width="8" height="18"  rx="4" fill="#93c5fd"/>
+  <rect x="20" y="76" width="8" height="48"  rx="4" fill="#3b82f6"/>
+  <rect x="32" y="92" width="8" height="32"  rx="4" fill="#60a5fa"/>
+  <rect x="44" y="106" width="8" height="18" rx="4" fill="#93c5fd"/>
+
+  <!-- WORDMARK -->
+  <text x="82" y="82" class="name">KORDAS</text>
+  <rect x="317" y="48" width="1.2" height="38" rx="0.6" fill="#475569"/>
+  <text x="330" y="82" class="tech">TECHNOLOGIES</text>
+
+  <!-- Accent + tagline -->
+  <rect x="82" y="96" width="44" height="3" rx="1.5" fill="#3b82f6"/>
+  <text x="82" y="120" class="tag">AI  ·  RAPID PROTOTYPING  ·  IoT</text>
+</svg>

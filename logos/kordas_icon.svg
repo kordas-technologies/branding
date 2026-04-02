@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Standalone icon mark — for favicon, avatar, app icon -->
+  <!-- Main stem -->
+  <rect x="8" y="4" width="8" height="56" rx="4" fill="#0f172a"/>
+
+  <!-- Upper arms -->
+  <rect x="20" y="4" width="8" height="24"  rx="4" fill="#3b82f6"/>
+  <rect x="32" y="4" width="8" height="16"  rx="4" fill="#60a5fa"/>
+  <rect x="44" y="4" width="8" height="9"   rx="4" fill="#bfdbfe"/>
+
+  <!-- Lower arms -->
+  <rect x="20" y="36" width="8" height="24" rx="4" fill="#3b82f6"/>
+  <rect x="32" y="44" width="8" height="16" rx="4" fill="#60a5fa"/>
+  <rect x="44" y="51" width="8" height="9"  rx="4" fill="#bfdbfe"/>
+</svg>
