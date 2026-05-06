@@ -1,0 +1,22 @@
+/* shared card frame for design-system preview cards */
+@import url('../colors_and_type.css');
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--kt-bg);
+  font-family: var(--kt-font-sans);
+  color: var(--kt-fg-1);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+body {
+  padding: 24px;
+  background: var(--kt-bg);
+  border: 1px solid var(--kt-border);
+}
+.row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+.row-tight { display: flex; gap: 6px; align-items: stretch; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+.muted { color: var(--kt-fg-3); font-size: 12px; letter-spacing: 0.04em; }
+.label { font-size: 11px; color: var(--kt-fg-3); letter-spacing: 0.06em; text-transform: uppercase; }
+.mono { font-family: var(--kt-font-mono); font-size: 11px; color: var(--kt-fg-2); }

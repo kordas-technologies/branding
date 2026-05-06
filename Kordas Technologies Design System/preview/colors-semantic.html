@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:#060a10;padding:24px;-webkit-font-smoothing:antialiased;}
+.row{display:flex;gap:12px;}
+.pair{flex:1;border:1px solid #1a2540;border-radius:0;overflow:hidden;}
+.top{padding:16px 14px;font-size:13px;font-weight:600;color:#e0ecff;}
+.top .hex{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:400;opacity:0.85;display:block;margin-top:2px;}
+.bot{padding:10px 14px;font-size:11px;font-weight:500;background:#0c1220;color:#6080a0;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:oklch(70% 0.22 220);letter-spacing:.06em;display:block;margin-bottom:12px;}
+</style></head><body>
+<span class="section-tag">// colors · semantic · AXIOM oklch states</span>
+<div class="row">
+  <div class="pair">
+    <div class="top" style="background:oklch(68% 0.18 145);">Success<span class="hex">oklch(68% 0.18 145)</span></div>
+    <div class="bot">--kt-green · success / active</div>
+  </div>
+  <div class="pair">
+    <div class="top" style="background:oklch(72% 0.17 75);color:#060a10;">Warning<span class="hex" style="color:#060a10;">oklch(72% 0.17 75)</span></div>
+    <div class="bot">--kt-amber · warning / pending</div>
+  </div>
+  <div class="pair">
+    <div class="top" style="background:oklch(62% 0.20 25);">Danger<span class="hex">oklch(62% 0.20 25)</span></div>
+    <div class="bot">--kt-red · error / stopped</div>
+  </div>
+  <div class="pair">
+    <div class="top" style="background:oklch(70% 0.22 220);color:#060a10;">Info<span class="hex" style="color:#060a10;">oklch(70% 0.22 220)</span></div>
+    <div class="bot">--kt-cyan · info / new</div>
+  </div>
+</div>
+</body></html>

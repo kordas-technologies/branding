@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:#060a10;padding:20px;-webkit-font-smoothing:antialiased;}
+.col{display:flex;flex-direction:column;gap:12px;}
+.box{border-radius:0;padding:32px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.box img{height:48px;}
+.wordmark{font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:0.08em;font-weight:500;}
+.wordmark .light{font-weight:300;margin-left:8px;}
+.lbl{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#304060;text-align:center;margin-top:4px;}
+.dark .wordmark{color:#e0ecff;}
+.dark .wordmark .light{color:#6080a0;}
+.canvas .wordmark{color:#e0ecff;}
+.canvas .wordmark .light{color:#6080a0;}
+.light-surf .wordmark{color:#060a10;}
+.light-surf .wordmark .light{color:#6080a0;}
+</style></head><body>
+<div class="col">
+  <div>
+    <div class="box dark" style="background:#0c1220;border:1px solid #1a2540;">
+      <img src="../assets/logos/kordas_kmark.svg" alt="Kordas Technologies — dark surface">
+      <span class="wordmark">KORDAS<span class="light">TECHNOLOGIES</span></span>
+    </div>
+    <div class="lbl">Primary · dark surface · K-mark + mono wordmark</div>
+  </div>
+  <div>
+    <div class="box canvas" style="background:#060a10;border:1px solid #1a2540;">
+      <img src="../assets/logos/kordas_kmark.svg" alt="Kordas Technologies — canvas">
+      <span class="wordmark">KORDAS<span class="light">TECHNOLOGIES</span></span>
+    </div>
+    <div class="lbl">Canvas · base background</div>
+  </div>
+  <div>
+    <div class="box light-surf" style="background:#f4f6fa;border:1px solid #c8d2e2;">
+      <img src="../assets/logos/kordas_kmark_light.svg" alt="Kordas Technologies — light surface">
+      <span class="wordmark">KORDAS<span class="light">TECHNOLOGIES</span></span>
+    </div>
+    <div class="lbl">Light surface · print/email · deeper cyan variant</div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <!-- Kordas Technologies — AXIOM K-mark icon (favicon / app icon).
+       4px top/bottom inset on 64×64. K-mark height=56, canonical proportions,
+       horizontally centered (K-mark width = 0.636·h = 35.62, padded 14.19 each side). -->
+  <rect x="14.19" y="4"     width="10.08" height="56"    rx="5.04" fill="#00b8e6"/>
+  <rect x="26.96" y="4"     width="10.08" height="21.28" rx="5.04" fill="#00b8e6"/>
+  <rect x="39.73" y="4"     width="10.08" height="22.58" rx="5.04" fill="#00b8e6"/>
+  <rect x="26.96" y="29.31" width="10.08" height="30.69" rx="5.04" fill="#c2dceb"/>
+  <rect x="39.73" y="38.05" width="10.08" height="21.95" rx="5.04" fill="#c2dceb"/>
+</svg>

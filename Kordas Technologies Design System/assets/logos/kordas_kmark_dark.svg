@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 100" width="82" height="100" fill="none">
+  <!-- Kordas Technologies — AXIOM K-mark, on dark backgrounds.
+       Canonical proportions. Same colors as kordas_kmark.svg
+       (cyan + ice read clearly on near-black). -->
+  <rect x="0"    y="0"     width="18" height="100"  rx="9" fill="#00b8e6"/>
+  <rect x="22.8" y="0"     width="18" height="38"   rx="9" fill="#00b8e6"/>
+  <rect x="45.6" y="0"     width="18" height="40.32" rx="9" fill="#00b8e6"/>
+  <rect x="22.8" y="45.2"  width="18" height="54.8" rx="9" fill="#c2dceb"/>
+  <rect x="45.6" y="60.8"  width="18" height="39.2" rx="9" fill="#c2dceb"/>
+</svg>

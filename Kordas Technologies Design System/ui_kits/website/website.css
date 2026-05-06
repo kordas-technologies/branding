@@ -1,0 +1,837 @@
+@import url('../../colors_and_type.css');
+
+/* =========================================================================
+   Kordas Technologies — Marketing Website (AXIOM)
+   v2.0 — May 2026
+
+   Class names preserved from v1; styling unified to AXIOM (dark, cyan + ice,
+   Inter Tight + JetBrains Mono in chrome, zero radius). The JSX components
+   in ui_kits/website/*.jsx use these class names — markup is unchanged.
+   ========================================================================= */
+
+/* ---------- RESET ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--kt-font-sans);
+  font-size: var(--kt-fs-body);
+  line-height: var(--kt-lh-body);
+  color: var(--kt-fg-1);
+  background: var(--kt-bg);
+  -webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar { width: 4px; }
+body::-webkit-scrollbar-track { background: var(--kt-bg); }
+body::-webkit-scrollbar-thumb { background: var(--kt-border); }
+::selection { background: var(--kt-cyan-dim); color: var(--kt-fg-1); }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ---------- BODY BACKGROUND FX — fixed scanlines + grid (AXIOM signature) ---------- */
+body { position: relative; }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--kt-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--kt-border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.055;
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 2px,
+    rgba(0, 200, 255, 0.018) 2px 3px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kt-container {
+  max-width: var(--kt-container);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- BUTTONS — AXIOM mono, zero radius, bracket convention ---------- */
+.kt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--kt-font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 10px 20px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--kt-dur-fast) var(--kt-ease);
+  white-space: nowrap;
+  text-transform: lowercase;
+}
+.kt-btn-sm { padding: 6px 14px; font-size: 10px; }
+.kt-btn-lg { padding: 13px 28px; font-size: 12px; }
+
+.kt-btn-primary {
+  background: var(--kt-cyan);
+  color: var(--kt-bg);
+  font-weight: 500;
+}
+.kt-btn-primary:hover { background: var(--kt-ice); color: var(--kt-bg); }
+
+.kt-btn-secondary {
+  background: var(--kt-cyan-bg);
+  color: var(--kt-cyan);
+  border-color: var(--kt-cyan);
+}
+.kt-btn-secondary:hover { background: var(--kt-cyan-dim); color: var(--kt-fg-1); }
+
+.kt-btn-ghost {
+  background: transparent;
+  color: var(--kt-fg-2);
+  border-color: var(--kt-border);
+}
+.kt-btn-ghost:hover { color: var(--kt-fg-1); border-color: var(--kt-cyan); }
+
+/* ---------- COMMON ---------- */
+.kt-eyebrow {
+  display: inline-block;
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--kt-cyan);
+}
+.kt-light { font-weight: 300; color: var(--kt-fg-3); }
+.kt-mono { font-family: var(--kt-font-mono); font-size: 11px; color: var(--kt-fg-3); letter-spacing: 0.06em; }
+.kt-rule-blue,
+.kt-rule-cyan {
+  display: block;
+  height: 2px;
+  width: 56px;
+  background: var(--kt-cyan);
+  border: 0;
+  border-radius: 0;
+  margin: 12px 0 0 0;
+}
+.kt-tag {
+  display: inline-block;
+  font-family: var(--kt-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 0;
+  background: var(--kt-bg-elev);
+  color: var(--kt-fg-2);
+  border: 1px solid var(--kt-border);
+  margin: 0 6px 6px 0;
+}
+.kt-vbar {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: var(--kt-border);
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+/* ---------- NAV — AXIOM signature: dark, blur on scroll, cyan accent line ---------- */
+.kt-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(6, 10, 16, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: all var(--kt-dur-base) var(--kt-ease);
+}
+.kt-nav.is-scrolled {
+  background: rgba(6, 10, 16, 0.92);
+  border-bottom-color: var(--kt-border);
+}
+.kt-nav-inner {
+  max-width: var(--kt-container);
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.kt-nav-logo img { height: 32px; }
+.kt-nav-links {
+  display: flex;
+  gap: 0;
+  margin-left: 16px;
+}
+.kt-nav-links a {
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--kt-fg-2);
+  font-weight: 400;
+  padding: 0 14px;
+  border-left: 1px solid var(--kt-border);
+  transition: color var(--kt-dur-fast) var(--kt-ease);
+}
+.kt-nav-links a:first-child { border-left: 0; }
+.kt-nav-links a:hover { color: var(--kt-fg-1); }
+.kt-nav-links a::before {
+  content: '/';
+  color: var(--kt-fg-3);
+  margin-right: 2px;
+}
+.kt-nav-cta {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.kt-nav-cta > * { font-family: var(--kt-font-mono); font-size: 11px; color: var(--kt-fg-2); }
+
+/* ---------- HERO — AXIOM dark with grid + scanline overlay ---------- */
+.kt-hero {
+  padding: 96px 0 100px;
+  background: var(--kt-bg);
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+}
+.kt-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--kt-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--kt-border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.kt-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 30%, oklch(18% 0.08 220), transparent 60%);
+  pointer-events: none;
+}
+.kt-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+}
+.kt-hero-title {
+  font-family: var(--kt-font-display);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--kt-fg-1);
+  margin: 16px 0 24px;
+}
+.kt-hero-title .kt-light { color: var(--kt-cyan); font-weight: 700; }
+.kt-hero-blurb {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--kt-fg-2);
+  max-width: 520px;
+  margin: 0 0 32px;
+}
+.kt-hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.kt-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kt-fg-3);
+}
+.kt-hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.kt-hero-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--kt-bg-elev);
+  border: 1px solid var(--kt-border);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+  box-shadow: var(--kt-shadow-md);
+}
+.kt-databar {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+  height: 120px;
+  margin-bottom: 32px;
+}
+.kt-databar-group {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+}
+.kt-databar-bar {
+  width: 8px;
+  border-radius: var(--kt-r-pill);  /* the only place pill is allowed */
+  background: var(--kt-cyan);
+}
+.kt-databar-bar.is-ice { background: var(--kt-ice); }
+.kt-hero-stat {
+  text-align: center;
+  border-top: 1px solid var(--kt-border);
+  padding-top: 28px;
+  width: 100%;
+}
+.kt-hero-stat-num {
+  font-family: var(--kt-font-display);
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--kt-cyan);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.kt-hero-stat-lbl {
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  color: var(--kt-fg-3);
+  margin-top: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- SECTION ---------- */
+.kt-section {
+  padding: 96px 0;
+  position: relative;
+}
+.kt-section-tint {
+  background: var(--kt-bg-elev);
+  border-top: 1px solid var(--kt-border);
+  border-bottom: 1px solid var(--kt-border);
+}
+.kt-section-dark {
+  background: var(--kt-bg);
+  color: var(--kt-fg-1);
+}
+.kt-section-head {
+  max-width: 720px;
+  margin-bottom: 56px;
+}
+.kt-section-head h2 {
+  font-family: var(--kt-font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--kt-fg-1);
+  margin: 12px 0 0;
+}
+.kt-section-head p.kt-section-lead {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--kt-fg-2);
+  line-height: 1.65;
+  margin-top: 24px;
+  max-width: 640px;
+}
+
+/* ---------- CAPABILITIES — border-collapse grid (AXIOM signature) ---------- */
+.kt-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--kt-border);
+}
+.kt-cap-card {
+  background: var(--kt-bg-elev);
+  border: 0;
+  border-radius: 0;
+  padding: 32px 28px;
+  box-shadow: none;
+  transition: all 150ms var(--kt-ease);
+}
+.kt-cap-card:hover {
+  background: var(--kt-bg-tint);
+  box-shadow: inset 0 0 0 1px var(--kt-cyan);
+}
+.kt-cap-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--kt-cyan-bg);
+  color: var(--kt-cyan);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid var(--kt-cyan-dim);
+}
+.kt-cap-card .kt-eyebrow { display: block; margin-bottom: 8px; }
+.kt-cap-card h3 {
+  font-family: var(--kt-font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--kt-fg-1);
+}
+.kt-cap-card p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--kt-fg-2);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+.kt-cap-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--kt-border);
+  padding-top: 16px;
+}
+.kt-cap-points li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  color: var(--kt-fg-2);
+  letter-spacing: 0.02em;
+}
+.kt-cap-points li svg { color: var(--kt-cyan); flex-shrink: 0; }
+
+/* ---------- CASE STUDY ---------- */
+.kt-case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.kt-case-photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, var(--kt-bg-elev), var(--kt-bg-tint)),
+    repeating-linear-gradient(90deg, var(--kt-bg-elev) 0 4px, var(--kt-bg) 4px 12px);
+  border: 1px solid var(--kt-border);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  box-shadow: var(--kt-shadow-md);
+}
+.kt-case-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, oklch(35% 0.20 220 / 0.30), transparent 50%),
+    radial-gradient(circle at 70% 60%, oklch(50% 0.15 220 / 0.18), transparent 60%);
+  pointer-events: none;
+}
+.kt-case-photo-overlay { position: relative; z-index: 1; }
+.kt-case-photo-stat {
+  font-family: var(--kt-font-display);
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--kt-cyan);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-top: 12px;
+}
+.kt-case-photo-cap {
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  color: var(--kt-fg-3);
+  margin-top: 8px;
+  letter-spacing: 0.06em;
+}
+.kt-case-tags { margin-top: 16px; }
+.kt-case-content h3 {
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--kt-cyan);
+  margin: 24px 0 8px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+.kt-case-content h3:first-child { margin-top: 0; }
+.kt-case-content p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--kt-fg-2);
+  line-height: 1.65;
+  margin: 0;
+}
+.kt-case-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--kt-border);
+  border-bottom: 1px solid var(--kt-border);
+}
+.kt-case-result-num {
+  font-family: var(--kt-font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--kt-fg-1);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.kt-case-result-lbl {
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  color: var(--kt-fg-3);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* ---------- PROCESS — border-collapse 4-col (AXIOM signature) ---------- */
+.kt-process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--kt-border);
+  position: relative;
+}
+.kt-process-step {
+  background: var(--kt-bg-elev);
+  border: 0;
+  border-radius: 0;
+  padding: 28px 24px;
+  position: relative;
+  box-shadow: none;
+  transition: background 150ms var(--kt-ease);
+}
+.kt-process-step:hover { background: var(--kt-bg-tint); }
+.kt-process-num {
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--kt-cyan);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: 0.06em;
+}
+.kt-process-step h4 {
+  font-family: var(--kt-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--kt-fg-1);
+  margin: 0 0 8px;
+}
+.kt-process-step p {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--kt-fg-2);
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+.kt-process-dur {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--kt-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--kt-fg-3);
+  padding: 2px 7px;
+  background: var(--kt-bg-tint);
+  border: 1px solid var(--kt-border);
+  border-radius: 0;
+}
+.kt-process-arrow {
+  position: absolute;
+  right: -22px;
+  top: 38px;
+  color: var(--kt-fg-3);
+  z-index: 1;
+}
+
+/* ---------- STATS — AXIOM border-collapse, mono numerals ---------- */
+.kt-stats {
+  background: var(--kt-bg-elev);
+  padding: 60px 0;
+  border-top: 1px solid var(--kt-border);
+  border-bottom: 1px solid var(--kt-border);
+}
+.kt-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.kt-stats-cell {
+  text-align: left;
+  padding: 0 24px;
+  border-left: 1px solid var(--kt-border);
+}
+.kt-stats-cell:first-child { border-left: 0; }
+.kt-stats-num {
+  font-family: var(--kt-font-mono);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--kt-cyan);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.kt-stats-lbl {
+  font-family: var(--kt-font-mono);
+  font-size: 9px;
+  color: var(--kt-fg-3);
+  margin-top: 12px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+.kt-stats-sub {
+  font-family: var(--kt-font-mono);
+  font-size: 9px;
+  color: var(--kt-fg-3);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- CONTACT ---------- */
+.kt-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.kt-contact-grid h2 {
+  font-family: var(--kt-font-display);
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.kt-contact-info {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kt-contact-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--kt-fg-1);
+  font-family: var(--kt-font-mono);
+  font-size: 13px;
+  transition: color var(--kt-dur-fast) var(--kt-ease);
+}
+.kt-contact-line:hover { color: var(--kt-cyan); }
+.kt-contact-line svg { color: var(--kt-cyan); }
+
+.kt-contact-form {
+  background: var(--kt-bg-elev);
+  border: 1px solid var(--kt-border);
+  border-radius: 0;
+  padding: 36px;
+  box-shadow: var(--kt-shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kt-field { display: flex; flex-direction: column; gap: 6px; }
+.kt-field label {
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--kt-fg-3);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+.kt-input {
+  font-family: var(--kt-font-mono);
+  font-size: 12px;
+  padding: 11px 13px;
+  background: var(--kt-bg);
+  border: 1px solid var(--kt-border);
+  border-radius: 0;
+  color: var(--kt-fg-1);
+  transition: all var(--kt-dur-fast) var(--kt-ease);
+  width: 100%;
+}
+.kt-input::placeholder { color: var(--kt-fg-4); }
+.kt-input:focus {
+  outline: none;
+  border-color: var(--kt-cyan);
+  box-shadow: 0 0 0 1px var(--kt-cyan);
+}
+textarea.kt-input { font-family: var(--kt-font-sans); font-size: 13px; }
+.kt-contact-fineprint {
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  color: var(--kt-fg-3);
+  margin: 0;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.kt-contact-success {
+  align-items: center;
+  text-align: center;
+  padding: 60px 36px;
+}
+
+/* ---------- SECTION CODE — § 02, § 03, § 04 (AXIOM signature mono cyan marker) ---------- */
+.kt-section-code {
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  color: var(--kt-cyan);
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- SRV CODES — SRV.01–03 top-of-card eyebrow (AXIOM signature) ---------- */
+.kt-cap-srv-code {
+  font-family: var(--kt-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--kt-fg-3);
+  margin-bottom: 12px;
+  transition: color var(--kt-dur-fast) var(--kt-ease);
+}
+.kt-cap-card:hover .kt-cap-srv-code { color: var(--kt-cyan); }
+
+/* ---------- TICKER MARQUEE — between hero and capabilities (AXIOM signature) ---------- */
+@keyframes slow-pan {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.kt-ticker {
+  background: var(--kt-bg-elev);
+  border-top: 1px solid var(--kt-border);
+  border-bottom: 1px solid var(--kt-border);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.kt-ticker-track {
+  display: flex;
+  gap: 0;
+  animation: slow-pan 30s linear infinite;
+  width: 200%;
+  white-space: nowrap;
+}
+.kt-ticker-item {
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kt-fg-3);
+  padding: 0 24px;
+  border-right: 1px solid var(--kt-border);
+}
+
+/* ---------- FOOTER ---------- */
+.kt-footer {
+  background: var(--kt-bg);
+  color: var(--kt-fg-2);
+  padding: 64px 0 0;
+  border-top: 1px solid var(--kt-border);
+}
+.kt-footer-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr;
+  gap: 64px;
+  padding-bottom: 56px;
+}
+.kt-footer-brand img { height: 36px; margin-bottom: 20px; }
+.kt-footer-brand p {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--kt-fg-2);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0;
+}
+.kt-footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.kt-footer-cols h5 {
+  font-family: var(--kt-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--kt-cyan);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.kt-footer-cols a, .kt-footer-cols span {
+  display: block;
+  font-family: var(--kt-font-mono);
+  font-size: 11px;
+  color: var(--kt-fg-2);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color var(--kt-dur-fast) var(--kt-ease);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+.kt-footer-cols a:hover { color: var(--kt-cyan); }
+.kt-footer-bottom {
+  border-top: 1px solid var(--kt-border);
+  padding: 20px 0;
+}
+.kt-footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--kt-font-mono);
+  font-size: 10px;
+  color: var(--kt-fg-3);
+  letter-spacing: 0.04em;
+}
+.kt-footer-legal a { color: var(--kt-fg-3); text-decoration: none; }
+.kt-footer-legal a:hover { color: var(--kt-cyan); }

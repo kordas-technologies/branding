@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:#060a10;padding:24px;-webkit-font-smoothing:antialiased;}
+.row{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;}
+.col{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.box{width:96px;height:72px;background:#101828;border:2px solid oklch(70% 0.22 220);display:flex;align-items:center;justify-content:center;}
+.name{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#6080a0;}
+.val{font-family:'JetBrains Mono',monospace;font-size:10px;color:oklch(70% 0.22 220);}
+.note{font-family:'JetBrains Mono',monospace;font-size:10px;color:#304060;margin-top:16px;}
+</style></head><body>
+<div class="row">
+  <div class="col"><div class="box" style="border-radius:0;"></div><span class="name">zero</span><span class="val">0px</span></div>
+  <div class="col"><div class="box" style="border-radius:2px;"></div><span class="name">xs</span><span class="val">2px</span></div>
+  <div class="col"><div class="box" style="border-radius:4px;"></div><span class="name">sm</span><span class="val">4px</span></div>
+  <div class="col"><div class="box" style="border-radius:6px;"></div><span class="name">md</span><span class="val">6px</span></div>
+  <div class="col"><div class="box" style="border-radius:8px;"></div><span class="name">lg</span><span class="val">8px</span></div>
+  <div class="col"><div class="box" style="border-radius:999px;width:80px;height:40px;margin-bottom:16px;"></div><span class="name">pill</span><span class="val">999px</span></div>
+</div>
+<div class="note">// AXIOM default: border-radius:0 on all UI elements. Pill (999px) reserved for logomark data-bars only.</div>
+</body></html>

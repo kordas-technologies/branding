@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Kordas Technologies — Raport techniczny</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm 28mm 18mm;
+    @bottom-left { content: "Kordas Technologies · Raport techniczny"; font-family: 'Segoe UI', Inter, sans-serif; font-size: 9pt; color: #94a3b8; }
+    @bottom-right { content: "Strona " counter(page) " / " counter(pages); font-family: 'JetBrains Mono', monospace; font-size: 9pt; color: #94a3b8; }
+  }
+  html, body { margin:0; padding:0; background:#e2e8f0; }
+  body { font-family: 'Segoe UI', Inter, sans-serif; color: #0f172a; font-size: 11pt; line-height: 1.55; }
+
+  /* on-screen page simulator */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #fff;
+    margin: 16px auto;
+    padding: 22mm 18mm 28mm 18mm;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.10);
+    page-break-after: always;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* HEADER (printed on each page in print) */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  .page-header img { height: 32px; }
+  .page-header .doc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: #64748b;
+    text-align: right;
+  }
+  .page-header .doc-id strong { color: #0f172a; display:block; font-size: 10pt; }
+
+  /* Cover */
+  .cover {
+    background: #0f172a !important;
+    color: #fff;
+    padding: 0;
+    overflow: hidden;
+  }
+  .cover .inner {
+    padding: 50mm 18mm 28mm 18mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 297mm;
+  }
+  .cover img.logo { height: 40px; margin-bottom: 28mm; }
+  .cover .eyebrow { font-size: 11pt; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#60a5fa; }
+  .cover h1 { font-size: 38pt; font-weight: 600; line-height: 1.05; letter-spacing:-0.01em; margin: 12px 0 16px; max-width: 150mm; }
+  .cover h1 .light { font-weight: 300; color:#94a3b8; }
+  .cover .subtitle { font-size: 14pt; color:#cbd5e1; line-height:1.5; max-width: 140mm; }
+  .cover .meta {
+    margin-top: auto;
+    border-top: 1px solid #1e293b;
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .cover .meta .lbl { font-size: 9pt; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#60a5fa; margin-bottom: 4px; }
+  .cover .meta .val { font-size: 11pt; color:#fff; font-weight:500; }
+  .cover .meta .val.mono { font-family:'JetBrains Mono', monospace; font-size: 10pt; }
+  .cover .databar {
+    position:absolute;
+    right: 18mm;
+    bottom: 28mm;
+    display:flex;
+    gap: 14px;
+    align-items: flex-end;
+    height: 80px;
+    opacity: 0.6;
+  }
+  .cover .databar-group { display:flex; gap:5px; align-items:flex-end; }
+  .cover .bar { width: 6px; border-radius: 3px; }
+
+  /* Headings */
+  h1.section { font-size: 24pt; font-weight: 600; line-height:1.15; letter-spacing:-0.01em; margin: 0 0 6px; color:#0f172a; }
+  .section-eyebrow { font-size: 9pt; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#3b82f6; }
+  hr.rule { border:0; border-top:3px solid #3b82f6; width: 36px; margin: 12px 0 24px; }
+
+  h2 { font-size: 14pt; font-weight: 600; color:#0f172a; margin: 28px 0 8px; padding-bottom:6px; border-bottom: 1px solid #e2e8f0;}
+  h3 { font-size: 11pt; font-weight: 600; color:#0f172a; margin: 18px 0 6px; }
+  p { margin: 0 0 10px; color:#334155; }
+
+  ul { margin: 6px 0 12px 0; padding-left: 18px; color:#334155; }
+  li { margin-bottom: 4px; }
+  li::marker { color: #3b82f6; }
+
+  /* TOC */
+  .toc { list-style:none; padding:0; margin: 0; }
+  .toc li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px dotted #cbd5e1;
+    font-size: 11pt;
+  }
+  .toc li .num { font-family:'JetBrains Mono', monospace; color:#3b82f6; font-weight:600; min-width: 36px; }
+  .toc li .ttl { flex:1; color:#0f172a; }
+  .toc li .pg { font-family:'JetBrains Mono', monospace; color:#64748b; font-size: 10pt; }
+
+  /* Callouts */
+  .callout {
+    background: #f1f5f9;
+    border-left: 3px solid #3b82f6;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout strong { display:block; font-size: 9pt; color:#475569; margin-bottom: 4px; letter-spacing:0.06em; text-transform:uppercase; }
+  .callout p { margin:0; font-size: 10pt; color:#334155; }
+
+  .callout.warn { background:#fef3c7; border-color:#f59e0b;}
+  .callout.warn strong { color:#92400e; }
+  .callout.ok { background:#dcfce7; border-color:#16a34a;}
+  .callout.ok strong { color:#166534;}
+
+  /* KPI strip */
+  .kpis { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  .kpi { border-left: 3px solid #3b82f6; padding: 4px 14px; }
+  .kpi .num { font-size: 26pt; font-weight: 600; color:#0f172a; line-height:1; letter-spacing:-0.01em;}
+  .kpi .lbl { font-size: 9pt; color:#64748b; margin-top: 6px; }
+
+  /* Tables */
+  table.data { width:100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 10pt; }
+  table.data thead th { background:#0f172a; color:#fff; padding: 10px 12px; text-align:left; font-weight:600; font-size: 9pt; letter-spacing:0.04em; text-transform:uppercase; }
+  table.data tbody td { padding: 10px 12px; border:1px solid #e2e8f0; color:#334155; vertical-align:top; }
+  table.data tbody tr:nth-child(even) td { background:#f8fafc; }
+  table.data .price { font-family:'JetBrains Mono', monospace; color:#3b82f6; font-weight:700; text-align:right; }
+  table.data .code { font-family:'JetBrains Mono', monospace; color:#64748b; font-size: 9pt; }
+  table.data .ok { color:#16a34a; font-weight:600;}
+  table.data .warn { color:#f59e0b; font-weight:600;}
+
+  .tag { display:inline-block; font-size: 9pt; padding: 2px 8px; background:#f1f5f9; color:#334155; border:1px solid #e2e8f0; border-radius:3px; margin: 0 4px 4px 0; font-weight:500;}
+
+  /* signature block */
+  .signoff {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .signoff .block .lbl { font-size: 9pt; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:#64748b; margin-bottom: 12px;}
+  .signoff .block .line { border-bottom: 1px solid #0f172a; height: 28px; margin-bottom: 8px;}
+  .signoff .block .who { font-size: 10pt; color:#475569; }
+
+  @media print {
+    body { background: #fff; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+      page-break-after: always;
+      width: auto;
+      min-height: auto;
+    }
+    .cover .inner { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<section class="page cover">
+  <div class="inner">
+    <img src="../../assets/logos/kordas_logo_light.png" alt="Kordas Technologies" class="logo">
+    <span class="eyebrow">RAPORT TECHNICZNY</span>
+    <h1>Detekcja ptaków<br><span class="light">w sadach owocowych.</span></h1>
+    <p class="subtitle">Walidacja algorytmu YOLOv8n na Raspberry Pi 5 — wyniki pilotażu, sezon 2026.</p>
+
+    <div class="meta">
+      <div><div class="lbl">Klient</div><div class="val">{{KLIENT}}</div></div>
+      <div><div class="lbl">Data raportu</div><div class="val mono">06.05.2026</div></div>
+      <div><div class="lbl">Numer dokumentu</div><div class="val mono">KORDAS/AI/2026/04/RAP</div></div>
+      <div><div class="lbl">Wersja</div><div class="val mono">v1.0 · final</div></div>
+      <div><div class="lbl">Klasyfikacja</div><div class="val">Poufne — Klient</div></div>
+      <div><div class="lbl">Autor</div><div class="val">Marcin Kordas</div></div>
+    </div>
+
+    <div class="databar">
+      <div class="databar-group">
+        <span class="bar" style="background:#3b82f6;height:64px;"></span>
+        <span class="bar" style="background:#60a5fa;height:46px;"></span>
+        <span class="bar" style="background:#bfdbfe;height:30px;"></span>
+      </div>
+      <div class="databar-group">
+        <span class="bar" style="background:#3b82f6;height:50px;"></span>
+        <span class="bar" style="background:#60a5fa;height:36px;"></span>
+        <span class="bar" style="background:#bfdbfe;height:22px;"></span>
+      </div>
+      <div class="databar-group">
+        <span class="bar" style="background:#3b82f6;height:78px;"></span>
+        <span class="bar" style="background:#60a5fa;height:58px;"></span>
+        <span class="bar" style="background:#bfdbfe;height:40px;"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TOC + EXECUTIVE SUMMARY ============== -->
+<section class="page">
+  <div class="page-header">
+    <img src="../../assets/logos/kordas_logo.svg" alt="">
+    <div class="doc-id"><strong>KORDAS/AI/2026/04/RAP</strong>v1.0 · 06.05.2026</div>
+  </div>
+
+  <span class="section-eyebrow">SPIS TREŚCI</span>
+  <h1 class="section">Streszczenie i nawigacja.</h1>
+  <hr class="rule">
+
+  <ol class="toc">
+    <li><span class="num">01</span><span class="ttl">Streszczenie wykonawcze</span><span class="pg">str. 02</span></li>
+    <li><span class="num">02</span><span class="ttl">Cel projektu i kryteria sukcesu</span><span class="pg">str. 03</span></li>
+    <li><span class="num">03</span><span class="ttl">Architektura rozwiązania</span><span class="pg">str. 04</span></li>
+    <li><span class="num">04</span><span class="ttl">Wyniki walidacji — 7 scenariuszy</span><span class="pg">str. 05</span></li>
+    <li><span class="num">05</span><span class="ttl">Rekomendacje i następne kroki</span><span class="pg">str. 06</span></li>
+    <li><span class="num">A</span><span class="ttl">Załącznik — pełna macierz wyników</span><span class="pg">str. 07</span></li>
+  </ol>
+
+  <h2 style="margin-top:36px;">01 — Streszczenie wykonawcze</h2>
+  <p>Pilotaż algorytmu detekcji ptaków zakończony pomyślnie. Na 7 scenariuszach polowych przekroczono gwarantowany próg <strong>65% Precision/Recall</strong> z marginesem 4–11 p.p. Czas przetwarzania pojedynczej klatki utrzymał się poniżej 1 sekundy, a stabilność pracy ciągłej wyniosła 9 dni bez restartu.</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="num">71.4%</div><div class="lbl">średnia Precision (cel ≥ 65%)</div></div>
+    <div class="kpi"><div class="num">0.84 s</div><div class="lbl">średni czas inferencji (cel &lt; 1 s)</div></div>
+    <div class="kpi"><div class="num">9 dni</div><div class="lbl">stabilność (cel &gt; 7 dni)</div></div>
+  </div>
+
+  <div class="callout ok">
+    <strong>WSZYSTKIE TWARDE PROGI OSIĄGNIĘTE</strong>
+    <p>Realizacja kwalifikuje się do odbioru końcowego zgodnie z Aneksem Specyfikacyjnym, sekcja 4.2. Płatność milestone #3 może zostać uruchomiona.</p>
+  </div>
+</section>
+
+<!-- ============== METHOD + RESULTS ============== -->
+<section class="page">
+  <div class="page-header">
+    <img src="../../assets/logos/kordas_logo.svg" alt="">
+    <div class="doc-id"><strong>KORDAS/AI/2026/04/RAP</strong>v1.0 · 06.05.2026</div>
+  </div>
+
+  <span class="section-eyebrow">04 — WALIDACJA</span>
+  <h1 class="section">Wyniki na 7 scenariuszach.</h1>
+  <hr class="rule">
+
+  <p>Każdy scenariusz testowano na minimum 500 klatkach 720p, z udziałem co najmniej dwóch gatunków docelowych (szpaka i drozda). Klasy ujemne obejmowały owoce, liście oraz ruch wiatru — historyczne źródła false-positive w wcześniejszych pilotażach.</p>
+
+  <table class="data">
+    <thead>
+      <tr><th>Scenariusz</th><th>Warunki</th><th style="text-align:right;">Precision</th><th style="text-align:right;">Recall</th><th style="text-align:right;">Czas (s)</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>S1</strong> — Sad jabłoniowy, dzień</td><td>Słońce, wiatr 0–2 m/s</td><td style="text-align:right;">0.74</td><td style="text-align:right;">0.71</td><td style="text-align:right;">0.81</td><td class="ok">PASS</td></tr>
+      <tr><td><strong>S2</strong> — Sad jabłoniowy, świt</td><td>Niskie światło, mgła</td><td style="text-align:right;">0.69</td><td style="text-align:right;">0.66</td><td style="text-align:right;">0.86</td><td class="ok">PASS</td></tr>
+      <tr><td><strong>S3</strong> — Wiśnia, pełne słońce</td><td>Cienie ostre, ruch liści</td><td style="text-align:right;">0.76</td><td style="text-align:right;">0.73</td><td style="text-align:right;">0.79</td><td class="ok">PASS</td></tr>
+      <tr><td><strong>S4</strong> — Wiśnia, pochmurnie</td><td>Rozproszone, równomierne</td><td style="text-align:right;">0.72</td><td style="text-align:right;">0.70</td><td style="text-align:right;">0.83</td><td class="ok">PASS</td></tr>
+      <tr><td><strong>S5</strong> — Czereśnia, deszcz</td><td>Krople na obiektywie</td><td style="text-align:right;">0.66</td><td style="text-align:right;">0.65</td><td style="text-align:right;">0.91</td><td class="warn">PASS (margin)</td></tr>
+      <tr><td><strong>S6</strong> — Sad mieszany, wieczór</td><td>Zachód, wysoki kontrast</td><td style="text-align:right;">0.71</td><td style="text-align:right;">0.68</td><td style="text-align:right;">0.84</td><td class="ok">PASS</td></tr>
+      <tr><td><strong>S7</strong> — Test stabilności (9 dni)</td><td>Ciągła praca, 24/7</td><td style="text-align:right;">0.72</td><td style="text-align:right;">0.69</td><td style="text-align:right;">0.84</td><td class="ok">PASS</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>UWAGA — SCENARIUSZ S5 (DESZCZ)</strong>
+    <p>Margines wobec progu wynosi 1 p.p. Rekomendujemy w fazie produkcyjnej dodać dokumentowy reset obiektywu (microservo) lub osłonę optyczną. Nie blokuje to odbioru — wymaganie progowe zostało spełnione.</p>
+  </div>
+
+  <h3>Stack technologiczny</h3>
+  <p>
+    <span class="tag">YOLOv8n</span>
+    <span class="tag">PyTorch 2.4 → ONNX → TFLite</span>
+    <span class="tag">Quant: int8</span>
+    <span class="tag">Raspberry Pi 5 (8 GB)</span>
+    <span class="tag">Sony IMX477 12 MP</span>
+    <span class="tag">MQTT (paho-mqtt)</span>
+    <span class="tag">Docker Compose</span>
+  </p>
+
+  <div class="signoff">
+    <div class="block">
+      <div class="lbl">Wykonawca</div>
+      <div class="line"></div>
+      <div class="who">Marcin Kordas, Kordas Technologies</div>
+    </div>
+    <div class="block">
+      <div class="lbl">Odbiór ze strony Klienta</div>
+      <div class="line"></div>
+      <div class="who">{{KLIENT_PRZEDSTAWICIEL}}</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

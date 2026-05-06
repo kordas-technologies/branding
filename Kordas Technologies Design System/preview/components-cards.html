@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:#060a10;padding:24px;-webkit-font-smoothing:antialiased;}
+.row{display:flex;gap:14px;}
+.card{background:#0c1220;border:1px solid #1a2540;border-radius:0;padding:24px;flex:1;}
+.card-accent{background:#101828;border-color:#1a2540;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:oklch(70% 0.22 220);display:block;margin-bottom:4px;}
+.rule{display:block;width:28px;height:2px;background:oklch(70% 0.22 220);border-radius:0;margin:12px 0 10px;}
+h4{font-size:17px;font-weight:600;color:#e0ecff;margin-bottom:8px;}
+p{font-size:13px;color:#6080a0;line-height:1.55;}
+.callout{background:#101828;border-left:2px solid oklch(70% 0.22 220);border-radius:0;padding:14px 16px;flex:1;}
+.callout strong{font-family:'JetBrains Mono',monospace;display:block;font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#6080a0;margin-bottom:5px;}
+.callout p{font-size:12px;color:#e0ecff;}
+</style></head><body>
+<div class="row">
+  <div class="card">
+    <span class="eyebrow">AI · CV</span>
+    <h4>Detekcja obiektów</h4>
+    <span class="rule"></span>
+    <p>YOLOv8n na RPi5, kwantyzacja int8. ≥ 65% Precision/Recall na 7 scenariuszach polowych.</p>
+  </div>
+  <div class="card card-accent">
+    <span class="eyebrow" style="color:oklch(88% 0.08 220);">IoT · EDGE</span>
+    <h4>Praca ciągła</h4>
+    <span class="rule" style="background:oklch(88% 0.08 220);"></span>
+    <p>Watchdog + auto-restart. Stabilność > 7 dni w warunkach polowych bez restartu.</p>
+  </div>
+  <div class="callout">
+    <strong>Uwaga dot. progu 65%</strong>
+    <p>Osiągnięcie gwarantowane pod warunkiem dostarczenia min. 500 anotowanych klatek (≥ 720p) z ptakami w sadach.</p>
+  </div>
+</div>
+</body></html>

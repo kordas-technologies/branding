@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 100" width="82" height="100" fill="none">
+  <!-- Kordas Technologies — AXIOM K-mark
+       Canonical proportions: bw=0.18h, g=0.048h, rx=bw/2; pill bars only.
+       Spine + upper arm: cyan (oklch 70% 0.22 220).
+       Lower arm: ice (oklch 88% 0.08 220). -->
+  <rect x="0"    y="0"     width="18" height="100"  rx="9" fill="#00b8e6"/>
+  <rect x="22.8" y="0"     width="18" height="38"   rx="9" fill="#00b8e6"/>
+  <rect x="45.6" y="0"     width="18" height="40.32" rx="9" fill="#00b8e6"/>
+  <rect x="22.8" y="45.2"  width="18" height="54.8" rx="9" fill="#c2dceb"/>
+  <rect x="45.6" y="60.8"  width="18" height="39.2" rx="9" fill="#c2dceb"/>
+</svg>

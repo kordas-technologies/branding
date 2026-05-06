@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AXIOM · Brand Kit — Kordas Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #060a10;
+  --surface:  #0c1220;
+  --surface2: #101828;
+  --border:   #1a2540;
+  --muted:    #304060;
+  --sub:      #6080a0;
+  --text:     #e0ecff;
+  --cyan:     oklch(70% 0.22 220);
+  --ice:      oklch(88% 0.08 220);
+  --green:    oklch(68% 0.18 145);
+  --amber:    oklch(72% 0.17 75);
+  --red:      oklch(62% 0.20 25);
+  --mono:     'JetBrains Mono', monospace;
+  --body:     'Inter Tight', sans-serif;
+}
+html { background: var(--bg); color: var(--text); }
+body {
+  font-family: var(--body);
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 72px 56px 120px;
+  background: var(--bg);
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,200,255,0.016) 2px, rgba(0,200,255,0.016) 3px
+  );
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.055;
+}
+* { position: relative; z-index: 1; }
+
+/* ─── type helpers ─────── */
+.mono     { font-family: var(--mono); }
+.lbl      { font-family: var(--mono); font-size: 9px; letter-spacing: .1em;
+             text-transform: uppercase; color: var(--muted); }
+.sec-tag  { font-family: var(--mono); font-size: 11px; color: var(--cyan);
+             letter-spacing: .06em; display: block; margin-bottom: 6px; }
+.sec-h    { font-family: var(--body); font-size: 26px; font-weight: 700;
+             letter-spacing: -.03em; color: var(--text); margin-bottom: 28px; }
+hr        { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+
+/* ─── token row ─────────── */
+.trow     { display: grid; grid-template-columns: 180px 220px 1fr;
+             gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--border);
+             align-items: baseline; }
+.tname    { font-family: var(--mono); font-size: 10px; color: var(--cyan); }
+.tval     { font-family: var(--mono); font-size: 10px; color: var(--sub); }
+.tdesc    { font-family: var(--body); font-size: 12px; color: var(--sub); line-height: 1.5; }
+
+/* ─── swatch grid ────────── */
+.sw-grid  { display: flex; gap: 4px; margin-bottom: 8px; }
+.sw       { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.sw-box   { border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════ -->
+<div style="display:flex; align-items:center; gap:20px; margin-bottom:16px;">
+  <!-- Logo duochrome -->
+  <svg width="44" height="54" viewBox="0 0 44 54" fill="none">
+    <rect x="0"     y="0" width="9.72" height="54"    rx="4.86" fill="oklch(70% 0.22 220)"/>
+    <rect x="12.31" y="0" width="9.72" height="20.52" rx="4.86" fill="oklch(70% 0.22 220)"/>
+    <rect x="24.62" y="0" width="9.72" height="21.77" rx="4.86" fill="oklch(70% 0.22 220)"/>
+    <rect x="12.31" y="24.41" width="9.72" height="29.59" rx="4.86" fill="oklch(88% 0.08 220)"/>
+    <rect x="24.62" y="32.83" width="9.72" height="21.17" rx="4.86" fill="oklch(88% 0.08 220)"/>
+  </svg>
+  <div>
+    <p class="lbl" style="margin-bottom:5px;">Kordas Technologies · AXIOM Design System · v1.0</p>
+    <h1 style="font-family:var(--body); font-size:36px; font-weight:700;
+      letter-spacing:-.04em; color:var(--text); line-height:1;">
+      Brand <span style="color:var(--cyan)">Kit</span>
+    </h1>
+  </div>
+  <div style="margin-left:auto; text-align:right;">
+    <p class="lbl">May 2026</p>
+    <p class="lbl" style="margin-top:4px;">Kraków, Poland</p>
+  </div>
+</div>
+<p style="font-family:var(--mono); font-size:11px; color:var(--muted);">
+  // ai · iot · rapid prototyping · on the verge of discovery
+</p>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     01 — LOGO
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 01</span>
+<h2 class="sec-h">Logo</h2>
+
+<!-- anatomy diagram -->
+<div style="display:grid; grid-template-columns:auto 1fr; gap:56px; align-items:start; margin-bottom:36px;">
+  <div>
+    <p class="lbl" style="margin-bottom:14px;">Anatomy</p>
+    <svg width="130" height="160" viewBox="0 0 130 160" fill="none">
+      <!-- construction grid: top · upper-split · lower-split -->
+      <line x1="0" y1="4"     x2="130" y2="4"     stroke="#1a2540" stroke-width=".5"/>
+      <line x1="0" y1="61.76" x2="130" y2="61.76" stroke="#1a2540" stroke-width=".5"/>
+      <line x1="0" y1="89.12" x2="130" y2="89.12" stroke="#1a2540" stroke-width=".5"/>
+      <!-- spine + upper arm: cyan -->
+      <rect x="4"     y="4" width="27.36" height="152"  rx="13.68" fill="oklch(70% 0.22 220)"/>
+      <rect x="38.66" y="4" width="27.36" height="57.76" rx="13.68" fill="oklch(70% 0.22 220)"/>
+      <rect x="73.31" y="4" width="27.36" height="61.29" rx="13.68" fill="oklch(70% 0.22 220)"/>
+      <!-- lower arm: ice -->
+      <rect x="38.66" y="72.70" width="27.36" height="83.30" rx="13.68" fill="oklch(88% 0.08 220)"/>
+      <rect x="73.31" y="96.42" width="27.36" height="59.58" rx="13.68" fill="oklch(88% 0.08 220)"/>
+      <!-- labels -->
+      <text x="106" y="82"    font-family="JetBrains Mono" font-size="8" fill="#304060">spine</text>
+      <text x="106" y="36"    font-family="JetBrains Mono" font-size="8" fill="oklch(70% 0.22 220)">upper</text>
+      <text x="106" y="120"   font-family="JetBrains Mono" font-size="8" fill="oklch(88% 0.08 220)">lower</text>
+    </svg>
+  </div>
+  <div>
+    <p class="lbl" style="margin-bottom:14px;">Construction rules</p>
+    <div style="border-top:1px solid var(--border);">
+      <div class="trow"><span class="tname">bar_width</span><span class="tval">1u (atomic unit)</span><span class="tdesc">All proportions derive from this. Never stretch bars independently.</span></div>
+      <div class="trow"><span class="tname">gap</span><span class="tval">0.16u</span><span class="tdesc">Fixed inter-bar spacing. Scales with u.</span></div>
+      <div class="trow"><span class="tname">height</span><span class="tval">5.5u</span><span class="tdesc">Total height. Logo is always taller than wide.</span></div>
+      <div class="trow"><span class="tname">radius</span><span class="tval">0.5 × bar_width</span><span class="tdesc">Perfect pill. Do not change. Pill is reserved for logomark only.</span></div>
+      <div class="trow"><span class="tname">upper_split</span><span class="tval">0.38 × height</span><span class="tdesc">Upper arm terminus. Gap before lower arm starts.</span></div>
+      <div class="trow" style="border-bottom:none;"><span class="tname">lower_split</span><span class="tval">0.56 × height</span><span class="tdesc">Lower arm origin. Intentional open notch ~0.18h wide.vot.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- size row -->
+<p class="lbl" style="margin-bottom:14px;">Minimum sizes &amp; scale</p>
+<div style="display:flex; align-items:flex-end; gap:24px; padding:20px; background:var(--surface); border:1px solid var(--border); margin-bottom:24px;">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px; opacity:.5;">
+    <svg width="13" height="16" viewBox="0 0 13 16" fill="none">
+      <rect x="0"    y="0" width="2.88" height="16"   rx="1.44" fill="oklch(70% 0.22 220)"/>
+      <rect x="3.65" y="0" width="2.88" height="6.08" rx="1.44" fill="oklch(70% 0.22 220)"/>
+      <rect x="7.30" y="0" width="2.88" height="6.45" rx="1.44" fill="oklch(70% 0.22 220)"/>
+      <rect x="3.65" y="7.23" width="2.88" height="8.77" rx="1.44" fill="oklch(88% 0.08 220)"/>
+      <rect x="7.30" y="9.73" width="2.88" height="6.27" rx="1.44" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl">16px<br/>avoid</p>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+      <rect x="0"    y="0" width="4.32" height="24"   rx="2.16" fill="oklch(70% 0.22 220)"/>
+      <rect x="5.47" y="0" width="4.32" height="9.12" rx="2.16" fill="oklch(70% 0.22 220)"/>
+      <rect x="10.94" y="0" width="4.32" height="9.68" rx="2.16" fill="oklch(70% 0.22 220)"/>
+      <rect x="5.47" y="10.85" width="4.32" height="13.15" rx="2.16" fill="oklch(88% 0.08 220)"/>
+      <rect x="10.94" y="14.59" width="4.32" height="9.41" rx="2.16" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl">24px<br/>min</p>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <svg width="26" height="32" viewBox="0 0 26 32" fill="none">
+      <rect x="0"    y="0" width="5.76" height="32"    rx="2.88" fill="oklch(70% 0.22 220)"/>
+      <rect x="7.30" y="0" width="5.76" height="12.16" rx="2.88" fill="oklch(70% 0.22 220)"/>
+      <rect x="14.59" y="0" width="5.76" height="12.90" rx="2.88" fill="oklch(70% 0.22 220)"/>
+      <rect x="7.30" y="14.46" width="5.76" height="17.54" rx="2.88" fill="oklch(88% 0.08 220)"/>
+      <rect x="14.59" y="19.46" width="5.76" height="12.54" rx="2.88" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl">32px<br/>favicon</p>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+      <rect x="0"     y="0" width="8.64" height="48"    rx="4.32" fill="oklch(70% 0.22 220)"/>
+      <rect x="10.94" y="0" width="8.64" height="18.24" rx="4.32" fill="oklch(70% 0.22 220)"/>
+      <rect x="21.89" y="0" width="8.64" height="19.35" rx="4.32" fill="oklch(70% 0.22 220)"/>
+      <rect x="10.94" y="21.70" width="8.64" height="26.30" rx="4.32" fill="oklch(88% 0.08 220)"/>
+      <rect x="21.89" y="29.18" width="8.64" height="18.82" rx="4.32" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl">48px<br/>nav</p>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <svg width="66" height="80" viewBox="0 0 66 80" fill="none">
+      <rect x="0"     y="0" width="14.4" height="80"    rx="7.2" fill="oklch(70% 0.22 220)"/>
+      <rect x="18.24" y="0" width="14.4" height="30.4"  rx="7.2" fill="oklch(70% 0.22 220)"/>
+      <rect x="36.48" y="0" width="14.4" height="32.26" rx="7.2" fill="oklch(70% 0.22 220)"/>
+      <rect x="18.24" y="36.16" width="14.4" height="43.84" rx="7.2" fill="oklch(88% 0.08 220)"/>
+      <rect x="36.48" y="48.64" width="14.4" height="31.36" rx="7.2" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl">80px<br/>hero</p>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+    <svg width="99" height="120" viewBox="0 0 99 120" fill="none">
+      <rect x="0"     y="0" width="21.6" height="120"   rx="10.8" fill="oklch(70% 0.22 220)"/>
+      <rect x="27.36" y="0" width="21.6" height="45.6"  rx="10.8" fill="oklch(70% 0.22 220)"/>
+      <rect x="54.72" y="0" width="21.6" height="48.38" rx="10.8" fill="oklch(70% 0.22 220)"/>
+      <rect x="27.36" y="54.24" width="21.6" height="65.76" rx="10.8" fill="oklch(88% 0.08 220)"/>
+      <rect x="54.72" y="72.96" width="21.6" height="47.04" rx="10.8" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl">120px<br/>display</p>
+  </div>
+</div>
+
+<!-- colour variants -->
+<p class="lbl" style="margin-bottom:14px;">Colour variants</p>
+<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:8px;">
+  <div style="background:var(--bg); border:1px solid var(--border); padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+    <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+      <rect x="0"     y="0" width="8.64" height="48"    rx="4.32" fill="oklch(70% 0.22 220)"/>
+      <rect x="10.94" y="0" width="8.64" height="18.24" rx="4.32" fill="oklch(70% 0.22 220)"/>
+      <rect x="21.89" y="0" width="8.64" height="19.35" rx="4.32" fill="oklch(70% 0.22 220)"/>
+      <rect x="10.94" y="21.70" width="8.64" height="26.30" rx="4.32" fill="oklch(88% 0.08 220)"/>
+      <rect x="21.89" y="29.18" width="8.64" height="18.82" rx="4.32" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="lbl" style="text-align:center;">primary<br/>dark bg</p>
+  </div>
+  <div style="background:#fff; border:1px solid #e0e4ec; padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+    <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+      <rect x="0" y="0" width="7.2" height="48" rx="3.6" fill="oklch(48% 0.22 220)"/>
+      <rect x="10" y="0" width="7.2" height="20.2" rx="3.6" fill="oklch(48% 0.22 220)"/>
+      <rect x="20" y="0" width="7.2" height="17.3" rx="3.6" fill="oklch(48% 0.22 220)"/>
+      <rect x="10" y="29.9" width="7.2" height="18.1" rx="3.6" fill="oklch(28% 0.12 220)"/>
+      <rect x="20" y="29.9" width="7.2" height="18.1" rx="3.6" fill="oklch(28% 0.12 220)"/>
+    </svg>
+    <p class="lbl" style="text-align:center; color:#888;">light bg<br/>darker values</p>
+  </div>
+  <div style="background:oklch(70% 0.22 220); padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+    <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+      <rect x="0" y="0" width="7.2" height="48" rx="3.6" fill="#060a10"/>
+      <rect x="10" y="0" width="7.2" height="20.2" rx="3.6" fill="#060a10"/>
+      <rect x="20" y="0" width="7.2" height="17.3" rx="3.6" fill="#060a10"/>
+      <rect x="10" y="29.9" width="7.2" height="18.1" rx="3.6" fill="rgba(6,10,16,0.6)"/>
+      <rect x="20" y="29.9" width="7.2" height="18.1" rx="3.6" fill="rgba(6,10,16,0.6)"/>
+    </svg>
+    <p class="lbl" style="text-align:center; color:rgba(6,10,16,0.5);">on accent<br/>bg knockout</p>
+  </div>
+  <div style="background:var(--surface); border:1px solid var(--border); padding:24px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+    <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+      <rect x="0" y="0" width="7.2" height="48" rx="3.6" fill="var(--text)"/>
+      <rect x="10" y="0" width="7.2" height="20.2" rx="3.6" fill="var(--text)"/>
+      <rect x="20" y="0" width="7.2" height="17.3" rx="3.6" fill="var(--text)"/>
+      <rect x="10" y="29.9" width="7.2" height="18.1" rx="3.6" fill="var(--sub)"/>
+      <rect x="20" y="29.9" width="7.2" height="18.1" rx="3.6" fill="var(--sub)"/>
+    </svg>
+    <p class="lbl" style="text-align:center;">monochrome<br/>print / B&amp;W</p>
+  </div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     02 — COLORS
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 02</span>
+<h2 class="sec-h">Color Tokens</h2>
+
+<!-- accent ramp -->
+<p class="lbl" style="margin-bottom:14px;">Accent — Cyan ramp</p>
+<div class="sw-grid" style="margin-bottom:24px;">
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(90% 0.07 220);"></div><p class="lbl" style="margin-top:6px;">cyan-200</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(90% .07 220)</p></div>
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(82% 0.13 220);"></div><p class="lbl" style="margin-top:6px;">cyan-300</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(82% .13 220)</p></div>
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(75% 0.18 220);"></div><p class="lbl" style="margin-top:6px;">cyan-400</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(75% .18 220)</p></div>
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(70% 0.22 220); border:2px solid var(--cyan);"></div><p class="lbl" style="margin-top:6px; color:var(--cyan);">cyan-500 ★</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(70% .22 220)</p></div>
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(60% 0.22 220);"></div><p class="lbl" style="margin-top:6px;">cyan-600</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(60% .22 220)</p></div>
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(30% 0.12 220);"></div><p class="lbl" style="margin-top:6px;">cyan-bg</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(30% .12 220)</p></div>
+  <div class="sw"><div class="sw-box" style="height:56px; background:oklch(18% 0.08 220);"></div><p class="lbl" style="margin-top:6px;">cyan-dim</p><p class="mono" style="font-size:9px; color:var(--muted); margin-top:2px;">oklch(18% .08 220)</p></div>
+</div>
+
+<!-- ice ramp -->
+<p class="lbl" style="margin-bottom:14px;">Secondary — Ice (logo lower arm)</p>
+<div class="sw-grid" style="margin-bottom:24px;">
+  <div class="sw"><div class="sw-box" style="height:40px; background:oklch(95% 0.03 220);"></div><p class="lbl" style="margin-top:6px;">ice-100</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:oklch(92% 0.05 220);"></div><p class="lbl" style="margin-top:6px;">ice-200</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:oklch(88% 0.08 220); border:2px solid var(--ice);"></div><p class="lbl" style="margin-top:6px; color:var(--ice);">ice-300 ★</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:oklch(82% 0.1 220);"></div><p class="lbl" style="margin-top:6px;">ice-400</p></div>
+</div>
+
+<!-- neutrals -->
+<p class="lbl" style="margin-bottom:14px;">Neutrals</p>
+<div class="sw-grid" style="margin-bottom:8px;">
+  <div class="sw"><div class="sw-box" style="height:40px; background:#060a10; border:1px solid var(--border);"></div><p class="lbl" style="margin-top:6px;">bg</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#060a10</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:#0c1220;"></div><p class="lbl" style="margin-top:6px;">surface</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#0c1220</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:#101828;"></div><p class="lbl" style="margin-top:6px;">surface-2</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#101828</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:#1a2540;"></div><p class="lbl" style="margin-top:6px;">border</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#1a2540</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:#304060;"></div><p class="lbl" style="margin-top:6px;">muted</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#304060</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:#6080a0;"></div><p class="lbl" style="margin-top:6px;">sub</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#6080a0</p></div>
+  <div class="sw"><div class="sw-box" style="height:40px; background:#e0ecff;"></div><p class="lbl" style="margin-top:6px;">text</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#e0ecff</p></div>
+</div>
+
+<!-- semantic -->
+<p class="lbl" style="margin-top:20px; margin-bottom:14px;">Semantic — Status</p>
+<div class="sw-grid" style="margin-bottom:24px;">
+  <div class="sw"><div class="sw-box" style="height:36px; background:oklch(68% 0.18 145);"></div><p class="lbl" style="margin-top:6px;">success</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">oklch(68% .18 145)</p></div>
+  <div class="sw"><div class="sw-box" style="height:36px; background:oklch(72% 0.17 75);"></div><p class="lbl" style="margin-top:6px;">warning</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">oklch(72% .17 75)</p></div>
+  <div class="sw"><div class="sw-box" style="height:36px; background:oklch(62% 0.20 25);"></div><p class="lbl" style="margin-top:6px;">error</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">oklch(62% .20 25)</p></div>
+  <div class="sw"><div class="sw-box" style="height:36px; background:#304060;"></div><p class="lbl" style="margin-top:6px;">offline</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">#304060</p></div>
+</div>
+
+<!-- token table -->
+<div style="border-top:1px solid var(--border);">
+  <div class="trow"><span class="tname">--color-accent</span><span class="tval">oklch(70% 0.22 220)</span><span class="tdesc">Primary interactive. Buttons, links, active, logo upper arm.</span></div>
+  <div class="trow"><span class="tname">--color-ice</span><span class="tval">oklch(88% 0.08 220)</span><span class="tdesc">Secondary accent. Logo lower arm, highlights.</span></div>
+  <div class="trow"><span class="tname">--color-bg</span><span class="tval">#060a10</span><span class="tdesc">Page background.</span></div>
+  <div class="trow"><span class="tname">--color-surface</span><span class="tval">#0c1220</span><span class="tdesc">Cards, panels, modals.</span></div>
+  <div class="trow"><span class="tname">--color-surface-2</span><span class="tval">#101828</span><span class="tdesc">Hover state over surface. Nested containers.</span></div>
+  <div class="trow"><span class="tname">--color-border</span><span class="tval">#1a2540</span><span class="tdesc">All dividers, input borders, table rules.</span></div>
+  <div class="trow"><span class="tname">--color-muted</span><span class="tval">#304060</span><span class="tdesc">Timestamps, comments, placeholders.</span></div>
+  <div class="trow"><span class="tname">--color-sub</span><span class="tval">#6080a0</span><span class="tdesc">Secondary text, nav, descriptions.</span></div>
+  <div class="trow" style="border-bottom:none;"><span class="tname">--color-text</span><span class="tval">#e0ecff</span><span class="tdesc">Primary text. Headings, body copy.</span></div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     03 — TYPOGRAPHY
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 03</span>
+<h2 class="sec-h">Typography</h2>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:36px;">
+  <div>
+    <p class="lbl" style="margin-bottom:12px;">Inter Tight — Display &amp; Body</p>
+    <p style="font-family:var(--body); font-size:13px; color:var(--sub); margin-bottom:16px; line-height:1.5;">
+      Used for all UI text, headings, body copy, and CTAs. Tight tracking at large sizes, comfortable at body size.
+    </p>
+    <div style="font-family:var(--body); font-size:44px; font-weight:700; color:var(--text);
+      letter-spacing:-.04em; line-height:.95; margin-bottom:8px;">
+      Discovery.
+    </div>
+    <div style="font-family:var(--body); font-size:20px; font-weight:600; color:var(--text);
+      letter-spacing:-.02em; margin-bottom:8px;">Section Heading</div>
+    <div style="font-family:var(--body); font-size:14px; font-weight:300; color:var(--sub); line-height:1.6;">
+      Body text — lightweight, generous line-height. Used for descriptions and feature copy.
+    </div>
+  </div>
+  <div>
+    <p class="lbl" style="margin-bottom:12px;">JetBrains Mono — Code &amp; UI</p>
+    <p style="font-family:var(--body); font-size:13px; color:var(--sub); margin-bottom:16px; line-height:1.5;">
+      Used for navigation items, labels, buttons, code blocks, data values, annotations.
+    </p>
+    <div style="font-family:var(--mono); font-size:14px; color:var(--cyan); line-height:1.9; background:var(--surface); border:1px solid var(--border); padding:16px;">
+      <span style="color:var(--muted);">// deploy sequence</span><br/>
+      &gt; ktx.init('edge_v2.4')<br/>
+      &gt; target: 94 nodes<br/>
+      <span style="color:var(--green);">✓ complete · 4.2ms avg</span><br/>
+      <span style="color:var(--muted);">// nodes: 2,847 · live</span>
+    </div>
+  </div>
+</div>
+
+<p class="lbl" style="margin-bottom:14px;">Type scale</p>
+<div style="border-top:1px solid var(--border);">
+  <div class="trow" style="align-items:center;">
+    <span class="tname">display</span>
+    <span class="tval">56–72px · 700 · −.04em</span>
+    <span style="font-family:var(--body); font-size:22px; font-weight:700; letter-spacing:-.03em; color:var(--text);">Hero heading</span>
+  </div>
+  <div class="trow" style="align-items:center;">
+    <span class="tname">heading-1</span>
+    <span class="tval">36px · 700 · −.03em</span>
+    <span style="font-family:var(--body); font-size:18px; font-weight:700; letter-spacing:-.02em; color:var(--text);">Section heading</span>
+  </div>
+  <div class="trow" style="align-items:center;">
+    <span class="tname">heading-2</span>
+    <span class="tval">24px · 600 · −.02em</span>
+    <span style="font-family:var(--body); font-size:15px; font-weight:600; color:var(--text);">Card / modal title</span>
+  </div>
+  <div class="trow" style="align-items:center;">
+    <span class="tname">heading-3</span>
+    <span class="tval">18px · 700 · −.02em</span>
+    <span style="font-family:var(--body); font-size:13px; font-weight:700; color:var(--text);">Component heading</span>
+  </div>
+  <div class="trow" style="align-items:center;">
+    <span class="tname">body-lg</span>
+    <span class="tval">15px · 300 · lh 1.65</span>
+    <span style="font-family:var(--body); font-size:13px; font-weight:300; color:var(--sub);">Hero sub, feature description</span>
+  </div>
+  <div class="trow" style="align-items:center;">
+    <span class="tname">body</span>
+    <span class="tval">13px · 400 · lh 1.6</span>
+    <span style="font-family:var(--body); font-size:12px; color:var(--sub);">Default body copy</span>
+  </div>
+  <div class="trow" style="align-items:center;">
+    <span class="tname">mono-ui</span>
+    <span class="tval">11px · 400–500 · lh 1.7</span>
+    <span style="font-family:var(--mono); font-size:11px; color:var(--cyan);">nav · buttons · labels · code</span>
+  </div>
+  <div class="trow" style="border-bottom:none; align-items:center;">
+    <span class="tname">mono-label</span>
+    <span class="tval">9px · 400 · .10em tracking</span>
+    <span style="font-family:var(--mono); font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em;">TIMESTAMPS · ANNOTATIONS</span>
+  </div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     04 — SPACING
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 04</span>
+<h2 class="sec-h">Spacing Scale</h2>
+
+<div style="display:flex; gap:0; border:1px solid var(--border); overflow:hidden; margin-bottom:24px;">
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:4px; height:4px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">4</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">.25rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:8px; height:8px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">8</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">.5rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:12px; height:12px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">12</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">.75rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:16px; height:16px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">16</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">1rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:20px; height:20px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">20</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">1.25rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:24px; height:24px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">24</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">1.5rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:32px; height:32px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">32</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">2rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:40px; height:40px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">40</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">2.5rem</p>
+  </div>
+  <div style="flex:1; border-right:1px solid var(--border); padding:16px 8px; text-align:center;">
+    <div style="width:48px; height:48px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">48</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">3rem</p>
+  </div>
+  <div style="flex:1; padding:16px 8px; text-align:center;">
+    <div style="width:64px; height:64px; background:var(--cyan); margin:0 auto 10px;"></div>
+    <p class="lbl">64</p><p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">4rem</p>
+  </div>
+</div>
+
+<div style="border-top:1px solid var(--border);">
+  <div class="trow"><span class="tname">--space-1</span><span class="tval">4px</span><span class="tdesc">Icon gap, inline tight padding</span></div>
+  <div class="trow"><span class="tname">--space-2</span><span class="tval">8px</span><span class="tdesc">Badge padding, button-sm padding</span></div>
+  <div class="trow"><span class="tname">--space-3</span><span class="tval">12px</span><span class="tdesc">Input padding, table cell, card inner gap</span></div>
+  <div class="trow"><span class="tname">--space-4</span><span class="tval">16px</span><span class="tdesc">Section inner padding, list item gap</span></div>
+  <div class="trow"><span class="tname">--space-5</span><span class="tval">20px</span><span class="tdesc">Card padding (sm), toolbar height offset</span></div>
+  <div class="trow"><span class="tname">--space-6</span><span class="tval">24px</span><span class="tdesc">Card padding (default), form gap, modal inner</span></div>
+  <div class="trow"><span class="tname">--space-8</span><span class="tval">32px</span><span class="tdesc">Between components, section gap</span></div>
+  <div class="trow"><span class="tname">--space-12</span><span class="tval">48px</span><span class="tdesc">Section heading margin, major separators</span></div>
+  <div class="trow" style="border-bottom:none;"><span class="tname">--space-16</span><span class="tval">64px</span><span class="tdesc">Page padding, hero inset, section padding</span></div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     05 — BORDERS, RADIUS, SHADOWS
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 05</span>
+<h2 class="sec-h">Borders, Radius &amp; Elevation</h2>
+
+<p class="lbl" style="margin-bottom:14px;">Border radius — zero is the rule</p>
+<div style="display:flex; gap:16px; align-items:flex-end; margin-bottom:12px;">
+  <div style="text-align:center;"><div style="width:56px; height:56px; background:var(--surface); border:1px solid var(--border); border-radius:0;"></div><p class="lbl" style="margin-top:6px;">0 · UI default</p></div>
+  <div style="text-align:center;"><div style="width:56px; height:56px; background:var(--surface); border:1px solid var(--border); border-radius:2px;"></div><p class="lbl" style="margin-top:6px;">2px · swatch</p></div>
+  <div style="text-align:center;"><div style="width:56px; height:56px; background:var(--surface); border:1px solid var(--border); border-radius:4px;"></div><p class="lbl" style="margin-top:6px;">4px · avatar</p></div>
+  <div style="text-align:center; margin-left:32px;"><div style="width:80px; height:28px; background:var(--surface); border:1px solid var(--border); border-radius:14px;"></div><p class="lbl" style="margin-top:6px;">pill · logo only</p></div>
+</div>
+<p class="mono" style="font-size:10px; color:var(--muted); margin-bottom:28px;">// Rule: All interactive UI = radius 0. Pill exclusively reserved for logomark bars.</p>
+
+<p class="lbl" style="margin-bottom:14px;">Elevation &amp; shadows</p>
+<div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:16px;">
+  <div style="text-align:center;">
+    <div style="width:100px; height:60px; background:var(--surface); border:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,.35);"></div>
+    <p class="lbl" style="margin-top:8px;">elev-1 · card flat</p>
+    <p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">0 1px 3px rgba(0,0,0,.35)</p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:100px; height:60px; background:var(--surface); border:1px solid var(--border); box-shadow:0 4px 16px rgba(0,0,0,.4);"></div>
+    <p class="lbl" style="margin-top:8px;">elev-2 · panel</p>
+    <p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">0 4px 16px rgba(0,0,0,.4)</p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:100px; height:60px; background:var(--surface); border:1px solid var(--border); box-shadow:0 8px 32px rgba(0,0,0,.5);"></div>
+    <p class="lbl" style="margin-top:8px;">elev-3 · modal</p>
+    <p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">0 8px 32px rgba(0,0,0,.5)</p>
+  </div>
+  <div style="text-align:center;">
+    <div style="width:100px; height:60px; background:var(--surface); border:1px solid var(--cyan); box-shadow:0 0 0 1px oklch(70% 0.22 220), 0 4px 20px rgba(0,200,255,.14);"></div>
+    <p class="lbl" style="margin-top:8px;">focus ring</p>
+    <p class="mono" style="font-size:8px; color:var(--muted); margin-top:2px;">border + glow accent</p>
+  </div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     06 — MOTION
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 06</span>
+<h2 class="sec-h">Motion &amp; Animation</h2>
+
+<div style="border-top:1px solid var(--border);">
+  <div class="trow"><span class="tname">--ease-default</span><span class="tval">cubic-bezier(.2,.7,.3,1)</span><span class="tdesc">UI transitions, hover states. Snappy entry, smooth exit.</span></div>
+  <div class="trow"><span class="tname">--ease-out</span><span class="tval">cubic-bezier(0, 0, .3, 1)</span><span class="tdesc">Element entries, fade-ins. Decelerating motion.</span></div>
+  <div class="trow"><span class="tname">--duration-fast</span><span class="tval">100–150ms</span><span class="tdesc">Hover color changes, button active state.</span></div>
+  <div class="trow"><span class="tname">--duration-base</span><span class="tval">200ms</span><span class="tdesc">Most transitions: border, background, opacity.</span></div>
+  <div class="trow"><span class="tname">--duration-enter</span><span class="tval">400–700ms</span><span class="tdesc">Page elements entering viewport. Staggered.</span></div>
+  <div class="trow" style="border-bottom:none;"><span class="tname">--duration-draw</span><span class="tval">1.2–2s</span><span class="tdesc">Logo draw-on animation. Loader pill sequence.</span></div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     07 — VOICE & TONE
+════════════════════════════════════════════════ -->
+<span class="sec-tag">// 07</span>
+<h2 class="sec-h">Voice &amp; Tone</h2>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:32px;">
+  <div>
+    <p class="lbl" style="margin-bottom:12px;">Principles</p>
+    <div style="display:flex; flex-direction:column; gap:0; border-top:1px solid var(--border);">
+      <div style="padding:12px 0; border-bottom:1px solid var(--border);">
+        <p style="font-family:var(--mono); font-size:10px; color:var(--cyan); margin-bottom:4px;">Precise, not verbose.</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--sub); line-height:1.55;">Say the minimum needed. Engineers respect brevity. No marketing padding.</p>
+      </div>
+      <div style="padding:12px 0; border-bottom:1px solid var(--border);">
+        <p style="font-family:var(--mono); font-size:10px; color:var(--cyan); margin-bottom:4px;">Confident, not arrogant.</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--sub); line-height:1.55;">State facts. Show results. Don't oversell — the work speaks.</p>
+      </div>
+      <div style="padding:12px 0; border-bottom:1px solid var(--border);">
+        <p style="font-family:var(--mono); font-size:10px; color:var(--cyan); margin-bottom:4px;">Technical, not exclusive.</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--sub); line-height:1.55;">Use precise terms. But explain context — not every reader is a ML engineer.</p>
+      </div>
+      <div style="padding:12px 0;">
+        <p style="font-family:var(--mono); font-size:10px; color:var(--cyan); margin-bottom:4px;">Human, not corporate.</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--sub); line-height:1.55;">Real people wrote this. Use contractions. Occasional dry humour is fine.</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="lbl" style="margin-bottom:12px;">Examples</p>
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div style="padding:12px 14px; background:var(--surface); border-left:3px solid var(--green);">
+        <p class="mono" style="font-size:9px; color:var(--green); margin-bottom:4px;">DO</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--text);">"Deploy to 94 nodes in under 15 minutes."</p>
+      </div>
+      <div style="padding:12px 14px; background:var(--surface); border-left:3px solid var(--red);">
+        <p class="mono" style="font-size:9px; color:var(--red); margin-bottom:4px;">DON'T</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--sub);">"Our cutting-edge solution empowers your organisation to leverage synergies."</p>
+      </div>
+      <div style="padding:12px 14px; background:var(--surface); border-left:3px solid var(--green);">
+        <p class="mono" style="font-size:9px; color:var(--green); margin-bottom:4px;">DO</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--text);">"From brief to working prototype in 4 weeks. Ugly but real — you can touch it."</p>
+      </div>
+      <div style="padding:12px 14px; background:var(--surface); border-left:3px solid var(--red);">
+        <p class="mono" style="font-size:9px; color:var(--red); margin-bottom:4px;">DON'T</p>
+        <p style="font-family:var(--body); font-size:12px; color:var(--sub);">"We deliver world-class rapid prototyping services tailored to your needs."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<div style="display:flex; align-items:center; justify-content:space-between; padding-top:8px;">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <svg width="20" height="24" viewBox="0 0 20 24" fill="none">
+      <rect x="0"    y="0" width="4.32" height="24"    rx="2.16" fill="oklch(70% 0.22 220)"/>
+      <rect x="5.47" y="0" width="4.32" height="9.12"  rx="2.16" fill="oklch(70% 0.22 220)"/>
+      <rect x="10.94" y="0" width="4.32" height="9.68" rx="2.16" fill="oklch(70% 0.22 220)"/>
+      <rect x="5.47" y="10.85" width="4.32" height="13.15" rx="2.16" fill="oklch(88% 0.08 220)"/>
+      <rect x="10.94" y="14.59" width="4.32" height="9.41"  rx="2.16" fill="oklch(88% 0.08 220)"/>
+    </svg>
+    <p class="mono" style="font-size:10px; color:var(--muted);">Kordas Technologies · AXIOM v1.0 · May 2026</p>
+  </div>
+  <p class="mono" style="font-size:10px; color:var(--muted);">kordas.tech</p>
+</div>
+
+</body>
+</html>

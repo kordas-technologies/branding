@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Kordas Technologies — Design System Gallery</title>
+<link rel="icon" href="assets/logos/kordas_kmark.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--kt-bg); color: var(--kt-fg-1); min-height: 100%; }
+  body {
+    font-family: var(--kt-font-sans);
+    padding: 32px 40px 80px;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--kt-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--kt-border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.055;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 2px, rgba(0,200,255,0.018) 2px 3px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap { position: relative; z-index: 1; max-width: 1500px; margin: 0 auto; }
+
+  header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid var(--kt-border);
+    margin-bottom: 32px;
+  }
+  header img { height: 44px; }
+  header .wm {
+    font-family: var(--kt-font-mono);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: var(--kt-fg-1);
+  }
+  header .wm .light { color: var(--kt-fg-3); margin-left: 8px; font-weight: 300; }
+  header .meta {
+    margin-left: auto;
+    font-family: var(--kt-font-mono);
+    font-size: 11px;
+    color: var(--kt-fg-3);
+    letter-spacing: 0.06em;
+  }
+
+  h1 {
+    font-family: var(--kt-font-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin: 16px 0 8px;
+  }
+  .lead {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--kt-fg-2);
+    max-width: 760px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+  .lead code {
+    font-family: var(--kt-font-mono);
+    font-size: 12px;
+    color: var(--kt-cyan);
+    background: var(--kt-bg-elev);
+    padding: 2px 6px;
+    border: 1px solid var(--kt-border);
+  }
+
+  section { margin-bottom: 48px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 16px;
+    border-top: 1px solid var(--kt-border);
+    padding-top: 24px;
+  }
+  .sec-code {
+    font-family: var(--kt-font-mono);
+    font-size: 11px;
+    color: var(--kt-cyan);
+    letter-spacing: 0.06em;
+  }
+  .sec-head h2 {
+    font-family: var(--kt-font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .sec-desc {
+    font-family: var(--kt-font-mono);
+    font-size: 11px;
+    color: var(--kt-fg-3);
+    letter-spacing: 0.04em;
+    margin-left: auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--kt-border);
+  }
+  .card {
+    background: var(--kt-bg-elev);
+    text-decoration: none;
+    transition: background 150ms var(--kt-ease);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 96px;
+    border: 0;
+    position: relative;
+  }
+  .card:hover {
+    background: var(--kt-bg-tint);
+    box-shadow: inset 0 0 0 1px var(--kt-cyan);
+  }
+  .card:hover .open-arrow { color: var(--kt-cyan); }
+
+  .card-name {
+    font-family: var(--kt-font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--kt-fg-1);
+  }
+  .card-path {
+    font-family: var(--kt-font-mono);
+    font-size: 10px;
+    color: var(--kt-fg-3);
+    letter-spacing: 0.04em;
+    word-break: break-all;
+  }
+  .card-tag {
+    font-family: var(--kt-font-mono);
+    font-size: 9px;
+    color: var(--kt-cyan);
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-top: auto;
+    padding-top: 6px;
+  }
+  .card-tag.warn { color: var(--kt-warning); }
+  .open-arrow {
+    position: absolute;
+    top: 18px; right: 20px;
+    font-family: var(--kt-font-mono);
+    font-size: 11px;
+    color: var(--kt-fg-3);
+    transition: color 150ms var(--kt-ease);
+  }
+
+  /* logo asset chips */
+  .asset {
+    background: var(--kt-bg-elev);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .asset img { height: 56px; }
+  .asset .info { display: flex; flex-direction: column; gap: 4px; }
+  .asset.light { background: #f4f6fa; }
+  .asset.light .card-name { color: #060a10; }
+  .asset.light .card-path { color: #304060; }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--kt-border);
+    font-family: var(--kt-font-mono);
+    font-size: 10px;
+    color: var(--kt-fg-3);
+    letter-spacing: 0.04em;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer a { color: var(--kt-cyan); text-decoration: none; }
+
+  .note {
+    background: var(--kt-bg-elev);
+    border-left: 3px solid var(--kt-cyan);
+    padding: 14px 18px;
+    font-size: 12px;
+    color: var(--kt-fg-2);
+    line-height: 1.65;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .note strong { color: var(--kt-fg-1); font-weight: 600; }
+  .note code { font-family: var(--kt-font-mono); color: var(--kt-cyan); font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img src="assets/logos/kordas_kmark.svg" alt="Kordas Technologies">
+  <span class="wm">KORDAS<span class="light">TECHNOLOGIES</span></span>
+  <span class="meta">// design-system gallery · v2.0 · AXIOM</span>
+</header>
+
+<h1>Design system gallery</h1>
+<p class="lead">
+  Spis treści design systemu Kordas Technologies. Każda karta otwiera plik w nowej zakładce.
+  Działa równie dobrze przez <code>file://</code> jak i lokalny serwer (<code>serve.bat</code>).
+</p>
+
+<div class="note">
+  <strong>// note</strong> — <code>slides/index.html</code> używa custom web component (<code>deck-stage.js</code>) który ma heavy thumbnail rail. Otwórz go bezpośrednio w pełnej zakładce, nie w iframe; nawigacja klawiaturą ←/→.
+</div>
+
+<!-- ════════════════════ AXIOM CANONICAL REFERENCE ════════════════════ -->
+<section>
+  <div class="sec-head">
+    <span class="sec-code">§ 01</span>
+    <h2>AXIOM — canonical reference</h2>
+    <span class="sec-desc">_experimental/AXIOM/ · 8 plików</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="_experimental/AXIOM/AXIOM-Landing-Page.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Landing Page</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM-Landing-Page.html</div>
+      <div class="card-tag">// reference landing</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM%20Brand%20Kit.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Brand Kit</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM Brand Kit.html</div>
+      <div class="card-tag">// tokens of record</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM%20Component%20System.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Component System</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM Component System.html</div>
+      <div class="card-tag">// components</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM%20Logo%20Duochrome.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Logo · Duochrome</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM Logo Duochrome.html</div>
+      <div class="card-tag">// logo · canonical</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM%20Logo%20Concepts.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Logo · Concepts</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM Logo Concepts.html</div>
+      <div class="card-tag">// logo · exploration</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM%20Logo%20K-Plot%20Variants.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Logo · K-Plot Variants</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM Logo K-Plot Variants.html</div>
+      <div class="card-tag">// logo · alternatives</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM%20Logo%20Treatment.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Logo · Treatment</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM Logo Treatment.html</div>
+      <div class="card-tag">// logo · monochrome</div>
+    </a>
+    <a class="card" href="_experimental/AXIOM/AXIOM-Design-Directions.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">AXIOM Design Directions</div>
+      <div class="card-path">_experimental/AXIOM/AXIOM-Design-Directions.html</div>
+      <div class="card-tag">// pitch · 3 directions</div>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════ MARKETING WEBSITE ════════════════════ -->
+<section>
+  <div class="sec-head">
+    <span class="sec-code">§ 02</span>
+    <h2>Marketing website (PL)</h2>
+    <span class="sec-desc">ui_kits/website/ · landing page</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="ui_kits/website/index.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Kordas Technologies — landing</div>
+      <div class="card-path">ui_kits/website/index.html</div>
+      <div class="card-tag">// PL · production</div>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════ TEMPLATES ════════════════════ -->
+<section>
+  <div class="sec-head">
+    <span class="sec-code">§ 03</span>
+    <h2>Templates</h2>
+    <span class="sec-desc">templates/ · slides/ · 4 plików</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="templates/email/transactional.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Email — transactional (light)</div>
+      <div class="card-path">templates/email/transactional.html</div>
+      <div class="card-tag">// email · light</div>
+    </a>
+    <a class="card" href="templates/email/transactional.dark.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Email — transactional (dark)</div>
+      <div class="card-path">templates/email/transactional.dark.html</div>
+      <div class="card-tag">// email · dark</div>
+    </a>
+    <a class="card" href="templates/pdf-report/index.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">PDF Report — A4 technical</div>
+      <div class="card-path">templates/pdf-report/index.html</div>
+      <div class="card-tag">// print · light</div>
+    </a>
+    <a class="card" href="slides/index.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Slides — pitch deck</div>
+      <div class="card-path">slides/index.html</div>
+      <div class="card-tag warn">// deck · open in full tab</div>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════ EMAIL TEMPLATES ════════════════════ -->
+<section>
+  <div class="sec-head">
+    <span class="sec-code">§ 04</span>
+    <h2>Email templates · formal + casual × light + dark</h2>
+    <span class="sec-desc">email-templates/ · 4 plików</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="email-templates/template_formal.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Formal · light</div>
+      <div class="card-path">email-templates/template_formal.html</div>
+      <div class="card-tag">// Dzień dobry</div>
+    </a>
+    <a class="card" href="email-templates/template_formal.dark.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Formal · dark</div>
+      <div class="card-path">email-templates/template_formal.dark.html</div>
+      <div class="card-tag">// Dzień dobry · dark</div>
+    </a>
+    <a class="card" href="email-templates/template_casual.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Casual · light</div>
+      <div class="card-path">email-templates/template_casual.html</div>
+      <div class="card-tag">// Hej</div>
+    </a>
+    <a class="card" href="email-templates/template_casual.dark.html" target="_blank">
+      <span class="open-arrow">↗</span>
+      <div class="card-name">Casual · dark</div>
+      <div class="card-path">email-templates/template_casual.dark.html</div>
+      <div class="card-tag">// Hej · dark</div>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════ PREVIEW SPECIMENS ════════════════════ -->
+<section>
+  <div class="sec-head">
+    <span class="sec-code">§ 05</span>
+    <h2>Token specimens</h2>
+    <span class="sec-desc">preview/ · 19 plików</span>
+  </div>
+  <div class="grid">
+    <a class="card" href="preview/colors-primary.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Colors · primary</div><div class="card-path">preview/colors-primary.html</div><div class="card-tag">// palette</div></a>
+    <a class="card" href="preview/colors-neutrals.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Colors · neutrals</div><div class="card-path">preview/colors-neutrals.html</div><div class="card-tag">// palette</div></a>
+    <a class="card" href="preview/colors-semantic.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Colors · semantic</div><div class="card-path">preview/colors-semantic.html</div><div class="card-tag">// palette</div></a>
+    <a class="card" href="preview/type-scale.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Type · scale</div><div class="card-path">preview/type-scale.html</div><div class="card-tag">// type</div></a>
+    <a class="card" href="preview/type-weights.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Type · weights</div><div class="card-path">preview/type-weights.html</div><div class="card-tag">// type</div></a>
+    <a class="card" href="preview/type-mono-eyebrow.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Type · mono eyebrow</div><div class="card-path">preview/type-mono-eyebrow.html</div><div class="card-tag">// type</div></a>
+    <a class="card" href="preview/components-buttons.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Buttons</div><div class="card-path">preview/components-buttons.html</div><div class="card-tag">// component</div></a>
+    <a class="card" href="preview/components-badges.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Badges</div><div class="card-path">preview/components-badges.html</div><div class="card-tag">// component</div></a>
+    <a class="card" href="preview/components-cards.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Cards</div><div class="card-path">preview/components-cards.html</div><div class="card-tag">// component</div></a>
+    <a class="card" href="preview/components-forms.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Forms</div><div class="card-path">preview/components-forms.html</div><div class="card-tag">// component</div></a>
+    <a class="card" href="preview/components-tables.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Tables</div><div class="card-path">preview/components-tables.html</div><div class="card-tag">// component</div></a>
+    <a class="card" href="preview/brand-wordmark.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Brand · wordmark</div><div class="card-path">preview/brand-wordmark.html</div><div class="card-tag">// brand</div></a>
+    <a class="card" href="preview/brand-icon.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Brand · icon</div><div class="card-path">preview/brand-icon.html</div><div class="card-tag">// brand</div></a>
+    <a class="card" href="preview/brand-iconography.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Brand · iconography</div><div class="card-path">preview/brand-iconography.html</div><div class="card-tag">// brand</div></a>
+    <a class="card" href="preview/brand-databar-motif.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Brand · data-bar motif</div><div class="card-path">preview/brand-databar-motif.html</div><div class="card-tag">// brand</div></a>
+    <a class="card" href="preview/brand-header-strip.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Brand · header strip</div><div class="card-path">preview/brand-header-strip.html</div><div class="card-tag">// brand</div></a>
+    <a class="card" href="preview/spacing-scale.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Spacing · scale</div><div class="card-path">preview/spacing-scale.html</div><div class="card-tag">// tokens</div></a>
+    <a class="card" href="preview/radius.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Radius (zero)</div><div class="card-path">preview/radius.html</div><div class="card-tag">// tokens</div></a>
+    <a class="card" href="preview/shadows.html" target="_blank"><span class="open-arrow">↗</span><div class="card-name">Shadows</div><div class="card-path">preview/shadows.html</div><div class="card-tag">// tokens</div></a>
+  </div>
+</section>
+
+<!-- ════════════════════ LOGO ASSETS ════════════════════ -->
+<section>
+  <div class="sec-head">
+    <span class="sec-code">§ 06</span>
+    <h2>Logo assets · SVG</h2>
+    <span class="sec-desc">assets/logos/</span>
+  </div>
+  <div class="grid">
+    <div class="asset">
+      <img src="assets/logos/kordas_kmark.svg" alt="K-mark">
+      <div class="info">
+        <div class="card-name">kordas_kmark.svg</div>
+        <div class="card-path">duochrome · default · dark surface</div>
+      </div>
+    </div>
+    <div class="asset">
+      <img src="assets/logos/kordas_kmark_dark.svg" alt="K-mark dark">
+      <div class="info">
+        <div class="card-name">kordas_kmark_dark.svg</div>
+        <div class="card-path">duochrome · dark backgrounds</div>
+      </div>
+    </div>
+    <div class="asset light">
+      <img src="assets/logos/kordas_kmark_light.svg" alt="K-mark light">
+      <div class="info">
+        <div class="card-name">kordas_kmark_light.svg</div>
+        <div class="card-path">deeper cyan · for white surfaces</div>
+      </div>
+    </div>
+    <div class="asset">
+      <img src="assets/logos/kordas_icon.svg" alt="Icon" style="height:48px;">
+      <div class="info">
+        <div class="card-name">kordas_icon.svg</div>
+        <div class="card-path">favicon · 64×64</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Kordas Technologies · Design System v2.0 · AXIOM unified · May 2026</span>
+  <span><a href="README.md">README</a> · <a href="_experimental/AXIOM/README.md">AXIOM canonical reference</a> · <a href="_archive/classic-light-mode/README.md.backup">v1 classic (archive)</a></span>
+</footer>
+
+</div>
+</body>
+</html>

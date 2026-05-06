@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Inter,Roboto,Arial,sans-serif;background:#f1f5f9;padding:24px;-webkit-font-smoothing:antialiased;}
+.row{display:flex;gap:14px;}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:24px;box-shadow:0 1px 3px rgba(15,23,42,0.08);flex:1;}
+.card-dark{background:#0f172a;border-color:#1e293b;}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#3b82f6;display:block;margin-bottom:4px;}
+.rule{display:block;width:28px;height:3px;background:#3b82f6;border-radius:2px;margin:12px 0 10px;}
+h4{font-size:17px;font-weight:600;color:#0f172a;margin-bottom:8px;}
+p{font-size:13px;color:#475569;line-height:1.55;}
+.callout{background:#f1f5f9;border-left:3px solid #3b82f6;border-radius:0 6px 6px 0;padding:14px 16px;flex:1;}
+.callout strong{display:block;font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:#475569;margin-bottom:5px;}
+.callout p{font-size:12px;color:#334155;}
+</style></head><body>
+<div class="row">
+  <div class="card">
+    <span class="eyebrow">AI · CV</span>
+    <h4>Detekcja obiektów</h4>
+    <span class="rule"></span>
+    <p>YOLOv8n na RPi5, kwantyzacja int8. ≥ 65% Precision/Recall na 7 scenariuszach polowych.</p>
+  </div>
+  <div class="card card-dark">
+    <span class="eyebrow" style="color:#60a5fa;">IoT · EDGE</span>
+    <h4 style="color:#fff;">Praca ciągła</h4>
+    <span class="rule"></span>
+    <p style="color:#94a3b8;">Watchdog + auto-restart. Stabilność > 7 dni w warunkach polowych bez restartu.</p>
+  </div>
+  <div class="callout">
+    <strong>Uwaga dot. progu 65%</strong>
+    <p>Osiągnięcie gwarantowane pod warunkiem dostarczenia min. 500 anotowanych klatek (≥ 720p) z ptakami w sadach.</p>
+  </div>
+</div>
+</body></html>

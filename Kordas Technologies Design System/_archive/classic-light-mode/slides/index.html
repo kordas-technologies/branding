@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Kordas Technologies — Deck</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root { --slide-pad: 80px; }
+  html, body { margin:0; padding:0; background:#0b1220; }
+  deck-stage section {
+    background: var(--kt-bg);
+    color: var(--kt-fg-1);
+    font-family: var(--kt-font-sans);
+    padding: var(--slide-pad);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+  .s-dark { background: var(--kt-navy) !important; color:#fff !important; }
+  .s-tint { background: var(--kt-bg-tint) !important; }
+  .eyebrow { font-size:18px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color: var(--kt-blue); }
+  .rule { display:block; height:4px; width:80px; background: var(--kt-blue); border:0; border-radius:2px; margin: 24px 0; }
+  .footer-strip {
+    position:absolute; left: var(--slide-pad); right: var(--slide-pad); bottom: 36px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:14px; color: var(--kt-fg-3); letter-spacing:0.06em; text-transform:uppercase;
+  }
+  .s-dark .footer-strip { color: var(--kt-slate-400); }
+  .footer-strip img { height: 32px; }
+
+  /* Title slide */
+  .title-slide { background: var(--kt-navy) !important; color:#fff !important; display:flex; flex-direction:column; justify-content:center; }
+  .title-slide .eyebrow { color: var(--kt-blue-light); }
+  .title-slide h1 { font-size: 110px; font-weight:600; line-height:1.0; letter-spacing:-0.02em; margin:24px 0; max-width: 1500px; }
+  .title-slide h1 .light { font-weight:300; color: var(--kt-slate-400); }
+  .title-slide .lead { font-size: 28px; color: var(--kt-slate-300); max-width: 1100px; line-height:1.5; }
+  .title-slide .databar { display:flex; gap:24px; align-items:flex-end; height:120px; margin-top: 56px; }
+  .title-slide .databar-group { display:flex; gap:8px; align-items:flex-end; }
+  .title-slide .bar { width:12px; border-radius:6px; }
+
+  /* Content slide */
+  .content-slide h2 { font-size: 76px; font-weight:600; line-height:1.05; letter-spacing:-0.015em; margin: 0 0 16px; max-width: 1400px; }
+  .content-slide .lead { font-size: 24px; color: var(--kt-fg-2); max-width: 1200px; line-height:1.5; }
+
+  /* 3-up cards */
+  .cards-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+  .card3 { background:#fff; border:1px solid var(--kt-border); border-radius:12px; padding:36px 32px; box-shadow: var(--kt-shadow-sm); }
+  .card3 .ico { width:56px; height:56px; background: var(--kt-blue-faint); color: var(--kt-blue); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom: 24px; }
+  .card3 h3 { font-size: 28px; font-weight:600; margin:0 0 12px; }
+  .card3 p { font-size: 17px; color: var(--kt-fg-2); line-height:1.55; margin:0; }
+
+  /* Stats */
+  .stats-row { display:grid; grid-template-columns: repeat(3, 1fr); gap:48px; margin-top: 64px; }
+  .stat { border-left: 4px solid var(--kt-blue); padding-left: 24px; }
+  .stat .num { font-size: 96px; font-weight: 600; color:#fff; line-height:1; letter-spacing: -0.02em; }
+  .stat .lbl { font-size: 18px; color: var(--kt-blue-light); margin-top: 16px; font-weight:500; letter-spacing:0.04em; text-transform:uppercase; }
+  .stat .sub { font-size: 16px; color: var(--kt-slate-400); margin-top: 8px; }
+
+  /* Quote */
+  .quote-slide { display:flex; flex-direction:column; justify-content:center; }
+  .quote-slide blockquote { font-size: 64px; font-weight: 300; line-height:1.2; letter-spacing:-0.015em; color: var(--kt-fg-1); margin:0; max-width:1400px; }
+  .quote-slide blockquote .accent { color: var(--kt-blue); font-weight:600; }
+  .quote-slide cite { display:block; margin-top: 48px; font-size: 18px; font-style:normal; color: var(--kt-fg-3); letter-spacing:0.06em; text-transform:uppercase; }
+  .quote-slide cite strong { color: var(--kt-fg-1); display:block; font-size: 22px; letter-spacing:0; text-transform:none; font-weight:600; margin-bottom:4px; }
+
+  /* Pricing table */
+  .price-table { width:100%; border-collapse: collapse; margin-top: 40px; font-size: 18px; }
+  .price-table thead th { background: var(--kt-navy); color:#fff; text-align:left; padding: 16px 20px; font-weight:600; letter-spacing:0.04em; font-size: 14px; text-transform: uppercase;}
+  .price-table tbody td { padding: 18px 20px; border-bottom: 1px solid var(--kt-border); }
+  .price-table tbody tr:nth-child(even) td { background: var(--kt-bg-tint); }
+  .price-table .price { color: var(--kt-blue); font-weight: 700; font-family: var(--kt-font-mono); text-align:right; }
+  .price-table .code { font-family: var(--kt-font-mono); color: var(--kt-fg-3); font-size: 14px; }
+
+  /* Closing */
+  .closing-slide { background: var(--kt-navy) !important; color:#fff !important; display:flex; flex-direction:column; justify-content:center; }
+  .closing-slide h2 { font-size: 96px; font-weight:600; line-height:1; letter-spacing:-0.02em; margin: 0 0 32px;}
+  .closing-slide .light { font-weight:300; color: var(--kt-slate-400); }
+  .closing-slide .contacts { display:grid; grid-template-columns: repeat(3, auto); gap: 56px; margin-top: 56px; font-size: 22px;}
+  .closing-slide .contact-block .lbl { font-size:14px; color: var(--kt-blue-light); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; font-weight:600; }
+  .closing-slide .contact-block .val { font-size:24px; color:#fff; font-weight:500; }
+</style>
+</head>
+<body>
+<script src="deck-stage.js"></script>
+<deck-stage>
+
+  <!-- 1 — TITLE -->
+  <section class="title-slide">
+    <span class="eyebrow">AI · RAPID PROTOTYPING · IoT</span>
+    <h1>Smart, driven,<br><span class="light">cross-stack innovation.</span></h1>
+    <p class="lead">Kordas Technologies — od prototypu na Raspberry Pi 5 do działającej instalacji w terenie. Krótkie cykle, mierzalne progi, transfer IP.</p>
+    <div class="databar">
+      <div class="databar-group">
+        <span class="bar" style="background:#3b82f6;height:100px;"></span>
+        <span class="bar" style="background:#60a5fa;height:72px;"></span>
+        <span class="bar" style="background:#bfdbfe;height:48px;"></span>
+      </div>
+      <div class="databar-group">
+        <span class="bar" style="background:#3b82f6;height:80px;"></span>
+        <span class="bar" style="background:#60a5fa;height:56px;"></span>
+        <span class="bar" style="background:#bfdbfe;height:36px;"></span>
+      </div>
+      <div class="databar-group">
+        <span class="bar" style="background:#3b82f6;height:120px;"></span>
+        <span class="bar" style="background:#60a5fa;height:88px;"></span>
+        <span class="bar" style="background:#bfdbfe;height:60px;"></span>
+      </div>
+    </div>
+    <div class="footer-strip" style="color: var(--kt-slate-400);">
+      <span>KORDAS/PRES/2026 · Kraków</span>
+      <span>01 / 06</span>
+    </div>
+  </section>
+
+  <!-- 2 — CONTENT (capabilities) -->
+  <section class="content-slide">
+    <span class="eyebrow">CO ROBIMY</span>
+    <hr class="rule">
+    <h2>Trzy filary, jeden zespół.</h2>
+    <p class="lead">Łączymy AI, IoT i rapid prototyping w jednej linii decyzyjnej — jeden Wykonawca, jeden harmonogram, jedna umowa.</p>
+    <div class="cards-3">
+      <div class="card3">
+        <div class="ico"><i data-lucide="bot" width="32" height="32"></i></div>
+        <h3>AI · Computer Vision</h3>
+        <p>YOLOv8 / v10, kwantyzacja int8, walidacja scenariuszowa. Twarde progi dokładności na danych Klienta.</p>
+      </div>
+      <div class="card3">
+        <div class="ico"><i data-lucide="rocket" width="32" height="32"></i></div>
+        <h3>Rapid Prototyping</h3>
+        <p>Hardware + firmware + backend. Jeden punkt kontaktu. MVP w 8–12 tygodni.</p>
+      </div>
+      <div class="card3">
+        <div class="ico"><i data-lucide="radio-tower" width="32" height="32"></i></div>
+        <h3>IoT · Edge · 5G</h3>
+        <p>Watchdog, auto-restart, MQTT/REST/gRPC. Stabilność &gt; 7 dni w pilotażach.</p>
+      </div>
+    </div>
+    <div class="footer-strip">
+      <img src="../assets/logos/kordas_logo.svg" alt="">
+      <span>02 / 06</span>
+    </div>
+  </section>
+
+  <!-- 3 — STATS (dark) -->
+  <section class="s-dark content-slide">
+    <span class="eyebrow" style="color: var(--kt-blue-light);">DLACZEGO MY</span>
+    <hr class="rule">
+    <h2 style="color:#fff;">Liczby, nie obietnice.</h2>
+    <div class="stats-row">
+      <div class="stat"><div class="num">12+</div><div class="lbl">projektów AI / IoT</div><div class="sub">od 2021</div></div>
+      <div class="stat"><div class="num">&lt; 24h</div><div class="lbl">pierwsza odpowiedź</div><div class="sub">w dni robocze</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">terminowości</div><div class="sub">w 2025</div></div>
+    </div>
+    <div class="footer-strip">
+      <img src="../assets/logos/kordas_logo_light.png" alt="">
+      <span>03 / 06</span>
+    </div>
+  </section>
+
+  <!-- 4 — QUOTE -->
+  <section class="quote-slide">
+    <span class="eyebrow">REALIZACJA · ANTYSZPAK</span>
+    <hr class="rule">
+    <blockquote>
+      „Dostarczyli algorytm <span class="accent">w terminie i z gwarantowanym progiem 65%</span> — na Raspberry Pi 5, w warunkach polowych. Pełen transfer IP."
+    </blockquote>
+    <cite><strong>Klient z branży agritech</strong>Pilotażowa instalacja, sezon 2026</cite>
+    <div class="footer-strip">
+      <img src="../assets/logos/kordas_logo.svg" alt="">
+      <span>04 / 06</span>
+    </div>
+  </section>
+
+  <!-- 5 — PRICING -->
+  <section class="content-slide s-tint">
+    <span class="eyebrow">WARIANTY · OFERTA</span>
+    <hr class="rule">
+    <h2>Dwa warianty: Bazowy lub Profesjonalny.</h2>
+    <p class="lead">Wariant Bazowy = proof-of-concept. Profesjonalny = pełna realizacja, twarde progi, transfer IP.</p>
+    <table class="price-table">
+      <thead><tr><th style="width:45%;">Kombinacja</th><th>Kod</th><th style="text-align:right;">Cena brutto</th><th style="text-align:center;width:140px;">Czas</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Z1-A + Z2-A</strong> · oba bazowe</td><td class="code">KORDAS/AI/2026/04</td><td class="price">70 110 zł</td><td style="text-align:center;">20 tyg.</td></tr>
+        <tr><td><strong>Z1-B + Z2-A</strong> · solidna faza I</td><td class="code">KORDAS/AI/2026/04</td><td class="price">116 850 zł</td><td style="text-align:center;">30 tyg.</td></tr>
+        <tr><td><strong>Z1-B + Z2-B</strong> · pełna realizacja</td><td class="code">KORDAS/AI/2026/04</td><td class="price">172 200 zł</td><td style="text-align:center;">34 tyg.</td></tr>
+      </tbody>
+    </table>
+    <div class="footer-strip">
+      <img src="../assets/logos/kordas_logo.svg" alt="">
+      <span>05 / 06</span>
+    </div>
+  </section>
+
+  <!-- 6 — CLOSING -->
+  <section class="closing-slide">
+    <span class="eyebrow" style="color: var(--kt-blue-light);">UMÓW ROZMOWĘ</span>
+    <hr class="rule">
+    <h2>Pierwsza konsultacja<br><span class="light">jest bezpłatna.</span></h2>
+    <div class="contacts">
+      <div class="contact-block"><div class="lbl">Email</div><div class="val">biuro@kordas.tech</div></div>
+      <div class="contact-block"><div class="lbl">Telefon</div><div class="val">+48 797 252 208</div></div>
+      <div class="contact-block"><div class="lbl">Adres</div><div class="val">Kraków, PL</div></div>
+    </div>
+    <div class="footer-strip">
+      <img src="../assets/logos/kordas_logo_light.png" alt="">
+      <span>06 / 06</span>
+    </div>
+  </section>
+
+</deck-stage>
+<script>
+  if (window.lucide) lucide.createIcons();
+  const obs = new MutationObserver(() => { if (window.lucide) lucide.createIcons(); });
+  obs.observe(document.body, { childList: true, subtree: true });
+</script>
+</body>
+</html>

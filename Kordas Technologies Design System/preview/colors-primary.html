@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:#060a10;padding:24px;-webkit-font-smoothing:antialiased;}
+.row{display:flex;gap:10px;flex-wrap:nowrap;}
+.swatch{flex:1;height:140px;border-radius:0;border:1px solid #1a2540;padding:14px 12px;display:flex;flex-direction:column;justify-content:space-between;}
+.name{font-size:13px;font-weight:600;color:#e0ecff;}
+.hex{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.8;}
+.tk{font-size:10px;opacity:0.65;margin-top:2px;}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:oklch(70% 0.22 220);letter-spacing:.06em;display:block;margin-bottom:12px;}
+</style></head><body>
+<span class="section-tag">// colors · primary · AXIOM palette</span>
+<div class="row">
+  <div class="swatch" style="background:oklch(70% 0.22 220);color:#060a10;">
+    <span class="name">Cyan</span>
+    <div><span class="hex" style="color:#060a10;">oklch(70% 0.22 220)</span><div class="tk" style="color:#060a10;">--kt-cyan · accent / CTAs</div></div>
+  </div>
+  <div class="swatch" style="background:oklch(60% 0.22 220);color:#060a10;">
+    <span class="name">Cyan Mid</span>
+    <div><span class="hex" style="color:#060a10;">oklch(60% 0.22 220)</span><div class="tk" style="color:#060a10;">--kt-cyan-mid · hover state</div></div>
+  </div>
+  <div class="swatch" style="background:oklch(50% 0.22 220);color:#e0ecff;">
+    <span class="name">Cyan Deep</span>
+    <div><span class="hex">oklch(50% 0.22 220)</span><div class="tk">--kt-cyan-deep · pressed / dark</div></div>
+  </div>
+  <div class="swatch" style="background:oklch(88% 0.08 220);color:#060a10;">
+    <span class="name">Ice</span>
+    <div><span class="hex" style="color:#060a10;">oklch(88% 0.08 220)</span><div class="tk" style="color:#060a10;">--kt-ice · logomark lower arm / tier 3</div></div>
+  </div>
+  <div class="swatch" style="background:#0c1220;color:#e0ecff;">
+    <span class="name">Surface</span>
+    <div><span class="hex">#0c1220</span><div class="tk">--kt-bg-elev · elevated surface</div></div>
+  </div>
+  <div class="swatch" style="background:#060a10;color:#e0ecff;border:1px solid #1a2540;">
+    <span class="name">Background</span>
+    <div><span class="hex">#060a10</span><div class="tk">--kt-bg · canvas / body</div></div>
+  </div>
+</div>
+</body></html>

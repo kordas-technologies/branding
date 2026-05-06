@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter Tight',sans-serif;background:#060a10;padding:24px;-webkit-font-smoothing:antialiased;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.field{display:flex;flex-direction:column;gap:5px;}
+label{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:#6080a0;}
+.input,.select,.textarea{font-family:'JetBrains Mono',monospace;font-size:13px;padding:10px 12px;border:1px solid #1a2540;border-radius:0;color:#e0ecff;background:#0c1220;width:100%;}
+.input:focus,.select:focus,.textarea:focus{outline:none;border-color:oklch(70% 0.22 220);box-shadow:0 0 0 2px rgba(0,200,255,0.12);}
+.error-input{border-color:oklch(62% 0.20 25);}
+.error-msg{font-family:'JetBrains Mono',monospace;font-size:11px;color:oklch(62% 0.20 25);margin-top:2px;}
+.hint{font-family:'JetBrains Mono',monospace;font-size:11px;color:#304060;}
+.check{display:flex;gap:8px;align-items:center;font-size:13px;color:#6080a0;}
+.check input{accent-color:oklch(70% 0.22 220);width:16px;height:16px;}
+</style></head><body>
+<div class="grid">
+  <div class="field"><label>Imię i nazwisko</label><input class="input" placeholder="Jan Kowalski"></div>
+  <div class="field"><label>Email służbowy</label><input class="input" value="biuro@kordas.tech"></div>
+</div>
+<div class="grid" style="margin-bottom:14px;">
+  <div class="field">
+    <label>Typ projektu</label>
+    <select class="select"><option>Wybierz…</option><option>AI / Computer Vision</option><option>IoT / Edge</option><option>Rapid Prototyping</option></select>
+  </div>
+  <div class="field">
+    <label>Telefon <span class="hint">(opcjonalnie)</span></label>
+    <input class="input error-input" value="+48 123">
+    <span class="error-msg">Format: +48 XXX XXX XXX</span>
+  </div>
+</div>
+<div class="field" style="margin-bottom:14px;"><label>Krótki opis projektu</label><textarea class="textarea" rows="2" placeholder="Detekcja ptaków w sadach, RPi5, &lt;1 s end-to-end…"></textarea></div>
+<div class="check"><input type="checkbox" checked><label style="font-family:'Inter Tight',sans-serif;font-size:13px;color:#6080a0;">Zgadzam się na przetwarzanie danych osobowych zgodnie z RODO.</label></div>
+</body></html>

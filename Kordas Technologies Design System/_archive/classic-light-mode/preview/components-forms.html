@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Inter,Roboto,Arial,sans-serif;background:#fff;padding:24px;-webkit-font-smoothing:antialiased;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.field{display:flex;flex-direction:column;gap:5px;}
+label{font-size:12px;font-weight:500;color:#475569;}
+.input,.select,.textarea{font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:6px;color:#0f172a;background:#fff;width:100%;}
+.input:focus,.select:focus,.textarea:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.18);}
+.error-input{border-color:#dc2626;}
+.error-msg{font-size:11px;color:#dc2626;margin-top:2px;}
+.hint{font-size:11px;color:#94a3b8;}
+.check{display:flex;gap:8px;align-items:center;font-size:13px;color:#334155;}
+.check input{accent-color:#3b82f6;width:16px;height:16px;}
+</style></head><body>
+<div class="grid">
+  <div class="field"><label>Imię i nazwisko</label><input class="input" placeholder="Jan Kowalski"></div>
+  <div class="field"><label>Email służbowy</label><input class="input" value="biuro@kordas.tech"></div>
+</div>
+<div class="grid" style="margin-bottom:14px;">
+  <div class="field">
+    <label>Typ projektu</label>
+    <select class="select"><option>Wybierz…</option><option>AI / Computer Vision</option><option>IoT / Edge</option><option>Rapid Prototyping</option></select>
+  </div>
+  <div class="field">
+    <label>Telefon <span class="hint">(opcjonalnie)</span></label>
+    <input class="input error-input" value="+48 123">
+    <span class="error-msg">Format: +48 XXX XXX XXX</span>
+  </div>
+</div>
+<div class="field" style="margin-bottom:14px;"><label>Krótki opis projektu</label><textarea class="textarea" rows="2" placeholder="Detekcja ptaków w sadach, RPi5, &lt;1 s end-to-end…"></textarea></div>
+<div class="check"><input type="checkbox" checked><label>Zgadzam się na przetwarzanie danych osobowych zgodnie z RODO.</label></div>
+</body></html>

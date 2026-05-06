@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kordas Technologies — Wiadomość (dark preview)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* DARK-AXIOM in-app preview only — not for email send.
+     Uses oklch cyan + ice directly; no Outlook hex-fallback needed. */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #060a10;
+    font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #e0ecff;
+    padding: 32px 16px;
+  }
+</style>
+</head>
+<!--
+  AXIOM dark variant — for in-app preview usage only.
+  Full oklch cyan (#060a10 bg, oklch 70% 0.22 220 cyan, oklch 88% 0.08 220 ice).
+  Do NOT send this file via email clients — oklch and dark surfaces render
+  incorrectly in Outlook/Gmail. Use transactional.html for actual sends.
+-->
+<body>
+
+<!-- Preheader (hidden) -->
+<div style="display:none; max-height:0; overflow:hidden;">
+  Dziękuję za zapytanie — odpowiem w ciągu 24h roboczych. ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#060a10; padding: 32px 16px;">
+  <tr>
+    <td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px; width:100%; background:#0c1220; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.50);">
+
+        <!-- HEADER -->
+        <tr>
+          <td style="background:#060a10; padding:28px 36px; border-bottom: 1px solid #1a2540;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" style="vertical-align:middle;">
+                  <img src="../../assets/logos/kordas_kmark.svg" alt="Kordas Technologies" width="48" style="height:auto; display:block;">
+                </td>
+                <td align="right" style="vertical-align:middle;">
+                  <span style="display:inline-block; background:oklch(18% 0.08 220); color:oklch(70% 0.22 220); font-family:'JetBrains Mono', ui-monospace, monospace; font-size:9px; font-weight:500; padding:5px 12px; letter-spacing:0.10em; text-transform:uppercase;">POTWIERDZENIE</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CYAN RULE -->
+        <tr><td style="background:oklch(70% 0.22 220); line-height:0; font-size:0;"><div style="height:3px; line-height:3px;">&nbsp;</div></td></tr>
+
+        <!-- BODY -->
+        <tr>
+          <td style="padding: 40px 36px 12px;">
+            <p style="margin:0; font-size:11px; font-weight:500; letter-spacing:0.10em; text-transform:uppercase; font-family:'JetBrains Mono', ui-monospace, monospace; color:oklch(70% 0.22 220);">DZIĘKUJĘ ZA KONTAKT</p>
+            <h1 style="margin:12px 0 0; font-size:28px; font-weight:700; line-height:0.95; color:#e0ecff; letter-spacing:-0.04em; font-family:'Inter Tight', system-ui, sans-serif;">Otrzymałem Twoje zapytanie.</h1>
+            <div style="height:3px; width:40px; background:oklch(70% 0.22 220); margin:20px 0;"></div>
+            <p style="margin:0; font-size:15px; line-height:1.65; color:#6080a0; font-family:'Inter Tight', system-ui, sans-serif;">
+              Cześć <strong style="color:#e0ecff;">{{IMIE}}</strong>,
+            </p>
+            <p style="margin:14px 0 0; font-size:15px; line-height:1.65; color:#6080a0; font-family:'Inter Tight', system-ui, sans-serif;">
+              Dziękuję za wiadomość przesłaną przez formularz kontaktowy. Odpowiem osobiście w ciągu <strong style="color:#e0ecff;">24 godzin roboczych</strong>. Jeśli sprawa jest pilna — zadzwoń: <a href="tel:+48797252208" style="color:oklch(70% 0.22 220); text-decoration:none; font-weight:500;">+48 797 252 208</a>.
+            </p>
+          </td>
+        </tr>
+
+        <!-- DETAILS BOX -->
+        <tr>
+          <td style="padding: 28px 36px 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#101828; border:1px solid #1a2540; border-left:3px solid oklch(70% 0.22 220);">
+              <tr>
+                <td style="padding: 18px 22px;">
+                  <p style="margin:0 0 10px; font-size:9px; font-weight:500; letter-spacing:0.10em; text-transform:uppercase; font-family:'JetBrains Mono', ui-monospace, monospace; color:#304060;">PODSUMOWANIE ZAPYTANIA</p>
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size:13px;">
+                    <tr>
+                      <td style="padding:4px 0; color:#304060; width:120px; vertical-align:top; font-family:'Inter Tight', system-ui, sans-serif;">Typ projektu</td>
+                      <td style="padding:4px 0; color:#e0ecff; font-weight:500; font-family:'Inter Tight', system-ui, sans-serif;">{{TYP_PROJEKTU}}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:4px 0; color:#304060; vertical-align:top; font-family:'Inter Tight', system-ui, sans-serif;">Data zgłoszenia</td>
+                      <td style="padding:4px 0; color:#e0ecff; font-weight:500; font-family:'JetBrains Mono', ui-monospace, monospace;">{{DATA}}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:4px 0; color:#304060; vertical-align:top; font-family:'Inter Tight', system-ui, sans-serif;">Numer ticketu</td>
+                      <td style="padding:4px 0; color:#e0ecff; font-weight:500; font-family:'JetBrains Mono', ui-monospace, monospace;">{{TICKET}}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- WHAT'S NEXT -->
+        <tr>
+          <td style="padding: 28px 36px 8px;">
+            <h3 style="margin:0 0 14px; font-size:16px; font-weight:700; color:#e0ecff; letter-spacing:-0.02em; font-family:'Inter Tight', system-ui, sans-serif;">Co dalej?</h3>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="32" style="vertical-align:top; padding-top:2px;">
+                  <div style="width:24px; height:24px; background:oklch(18% 0.08 220); color:oklch(70% 0.22 220); text-align:center; font-size:11px; font-weight:500; line-height:24px; font-family:'JetBrains Mono', ui-monospace, monospace;">1</div>
+                </td>
+                <td style="padding-bottom:12px; font-size:14px; line-height:1.55; color:#6080a0; font-family:'Inter Tight', system-ui, sans-serif;">
+                  <strong style="color:#e0ecff;">Wstępna analiza</strong> — przeczytam zapytanie, sprawdzę realizowalność, przygotuję pytania uzupełniające.
+                </td>
+              </tr>
+              <tr>
+                <td width="32" style="vertical-align:top; padding-top:2px;">
+                  <div style="width:24px; height:24px; background:oklch(18% 0.08 220); color:oklch(70% 0.22 220); text-align:center; font-size:11px; font-weight:500; line-height:24px; font-family:'JetBrains Mono', ui-monospace, monospace;">2</div>
+                </td>
+                <td style="padding-bottom:12px; font-size:14px; line-height:1.55; color:#6080a0; font-family:'Inter Tight', system-ui, sans-serif;">
+                  <strong style="color:#e0ecff;">Odpowiedź pisemna w 24h</strong> — wstępna opinia o realizowalności + propozycja terminu konsultacji.
+                </td>
+              </tr>
+              <tr>
+                <td width="32" style="vertical-align:top; padding-top:2px;">
+                  <div style="width:24px; height:24px; background:oklch(18% 0.08 220); color:oklch(70% 0.22 220); text-align:center; font-size:11px; font-weight:500; line-height:24px; font-family:'JetBrains Mono', ui-monospace, monospace;">3</div>
+                </td>
+                <td style="font-size:14px; line-height:1.55; color:#6080a0; font-family:'Inter Tight', system-ui, sans-serif;">
+                  <strong style="color:#e0ecff;">Konsultacja 30 min</strong> — bezpłatna, zdalnie. Wyjdziesz z konkretnym ramowym harmonogramem.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CTA -->
+        <tr>
+          <td style="padding: 28px 36px 36px;" align="center">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="background:oklch(70% 0.22 220); box-shadow:0 0 0 1px oklch(70% 0.22 220), 0 4px 20px rgba(0,200,255,0.14);">
+                  <a href="https://cal.com/kordas-tech/30min" style="display:inline-block; padding:14px 28px; font-size:15px; font-weight:500; color:#060a10; text-decoration:none; letter-spacing:0.01em; font-family:'Inter Tight', system-ui, sans-serif;">Zarezerwuj termin konsultacji →</a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:14px 0 0; font-size:12px; color:#304060; font-family:'Inter Tight', system-ui, sans-serif;">lub odpowiedz po prostu na ten email</p>
+          </td>
+        </tr>
+
+        <!-- SIGNATURE -->
+        <tr>
+          <td style="padding: 8px 36px 36px;">
+            <hr style="border:0; border-top:1px solid #1a2540; margin:0 0 24px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="font-size:14px; color:#6080a0; line-height:1.55; font-family:'Inter Tight', system-ui, sans-serif;">
+                  Pozdrawiam,<br>
+                  <strong style="color:#e0ecff; font-size:15px;">Marcin Kordas</strong><br>
+                  <span style="color:#304060; font-size:13px;">Founder, Kordas Technologies</span>
+                </td>
+                <td align="right" style="vertical-align:top;">
+                  <img src="../../assets/logos/kordas_kmark.svg" alt="" width="40" style="height:40px; opacity:0.7;">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td style="background:#060a10; padding:24px 36px; border-top: 1px solid #1a2540;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="font-size:12px; color:#304060; line-height:1.6; font-family:'Inter Tight', system-ui, sans-serif;">
+                  <strong style="color:#e0ecff; font-size:13px;">Kordas Technologies</strong><br>
+                  Przybyszewskiego 30/2, 30-128 Kraków<br>
+                  <a href="mailto:biuro@kordas.tech" style="color:oklch(70% 0.22 220); text-decoration:none;">biuro@kordas.tech</a> · <a href="tel:+48797252208" style="color:oklch(70% 0.22 220); text-decoration:none;">+48 797 252 208</a>
+                </td>
+                <td align="right" style="font-size:11px; color:#304060; vertical-align:top; font-family:'JetBrains Mono', ui-monospace, monospace;">
+                  NIP 6772446064
+                </td>
+              </tr>
+            </table>
+            <hr style="border:0; border-top:1px solid #1a2540; margin:18px 0 12px;">
+            <p style="margin:0; font-size:11px; color:#304060; line-height:1.5; font-family:'Inter Tight', system-ui, sans-serif;">
+              Ten email otrzymujesz, ponieważ wypełniłeś formularz kontaktowy na <a href="https://kordas.tech" style="color:#6080a0; text-decoration:underline;">kordas.tech</a>. Dane przetwarzamy zgodnie z <a href="https://kordas.tech/privacy" style="color:#6080a0; text-decoration:underline;">RODO</a>.
+            </p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* =========================================================================
+   Kordas Technologies — Design Tokens
+   Colors, type, spacing, radius, shadow, motion
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------------------------------------------------------------------
+     COLORS — Core brand
+     The brand is built on Navy + a 3-step Blue ramp echoing the data-bar
+     logo motif (one anchor + three stepping accents).
+     --------------------------------------------------------------------- */
+
+  /* Brand anchor */
+  --kt-navy:        #0f172a;   /* primary text, dark surfaces, logo stem */
+  --kt-navy-900:    #0b1220;   /* deeper navy — page bg on dark mode */
+  --kt-navy-800:    #1e293b;   /* hover-state for navy elements, borders on dark */
+
+  /* Blue ramp (the K's "data bars") */
+  --kt-blue:        #3b82f6;   /* primary accent, links, badges, CTAs */
+  --kt-blue-light:  #60a5fa;   /* secondary accent, second tier */
+  --kt-blue-pale:   #bfdbfe;   /* tertiary accent, soft fills */
+  --kt-blue-faint:  #dbeafe;   /* lightest tint — bg washes */
+  --kt-blue-deep:   #2563eb;   /* hover for primary blue */
+
+  /* Slate (neutral text + borders) */
+  --kt-slate-900:   #0f172a;
+  --kt-slate-700:   #334155;
+  --kt-slate-600:   #475569;
+  --kt-slate-500:   #64748b;
+  --kt-slate-400:   #94a3b8;
+  --kt-slate-300:   #cbd5e1;
+  --kt-slate-200:   #e2e8f0;
+  --kt-slate-100:   #f1f5f9;
+  --kt-slate-50:    #f8fafc;
+
+  /* Surfaces */
+  --kt-bg:          #f8fafc;   /* page bg (light) */
+  --kt-bg-elev:     #ffffff;   /* card / panel */
+  --kt-bg-tint:     #f1f5f9;   /* alt-row, callout bg */
+  --kt-bg-dark:     #0f172a;   /* dark surface */
+  --kt-bg-dark-2:   #1e293b;   /* dark surface elevated */
+
+  /* Semantic colors */
+  --kt-success:     #16a34a;
+  --kt-success-bg:  #dcfce7;
+  --kt-warning:     #f59e0b;
+  --kt-warning-bg:  #fef3c7;
+  --kt-danger:      #dc2626;
+  --kt-danger-bg:   #fee2e2;
+  --kt-info:        var(--kt-blue);
+  --kt-info-bg:     var(--kt-blue-faint);
+
+  /* Foreground tokens (semantic) */
+  --kt-fg-1:        var(--kt-navy);        /* primary text */
+  --kt-fg-2:        var(--kt-slate-600);   /* secondary / body */
+  --kt-fg-3:        var(--kt-slate-500);   /* tertiary / captions */
+  --kt-fg-4:        var(--kt-slate-400);   /* dimmed / placeholders */
+  --kt-fg-on-dark:  #f1f5f9;
+  --kt-fg-on-blue:  #ffffff;
+
+  /* Borders / dividers */
+  --kt-border:      var(--kt-slate-200);
+  --kt-border-strong: var(--kt-slate-300);
+  --kt-border-dark: var(--kt-navy-800);
+
+  /* ---------------------------------------------------------------------
+     TYPOGRAPHY
+     Brand font stack is Segoe UI / Roboto / Helvetica Neue / Arial
+     (system-friendly, Microsoft-ecosystem default).
+     For web we additionally load Inter as a near-substitute when Segoe UI
+     is not present (Linux, older Macs without Helvetica Neue).
+     --------------------------------------------------------------------- */
+  --kt-font-sans: 'Segoe UI', 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --kt-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, 'Courier New', monospace;
+  --kt-font-display: 'Segoe UI', 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Weights — brand uses Light + Semibold contrast (KORDAS bold | TECHNOLOGIES light) */
+  --kt-w-light:     300;
+  --kt-w-regular:   400;
+  --kt-w-medium:    500;
+  --kt-w-semibold:  600;
+  --kt-w-bold:      700;
+
+  /* Type scale (modular ~1.20) */
+  --kt-fs-display-xl: 56px;
+  --kt-fs-display:    44px;
+  --kt-fs-h1:         32px;
+  --kt-fs-h2:         24px;
+  --kt-fs-h3:         18px;
+  --kt-fs-h4:         16px;
+  --kt-fs-body-lg:    16px;
+  --kt-fs-body:       14px;
+  --kt-fs-body-sm:    13px;
+  --kt-fs-caption:    12px;
+  --kt-fs-micro:      10px;
+
+  --kt-lh-tight:      1.15;
+  --kt-lh-snug:       1.3;
+  --kt-lh-body:       1.6;
+  --kt-lh-loose:      1.75;
+
+  --kt-tracking-tag:    0.08em;   /* uppercase tags / badges / eyebrow */
+  --kt-tracking-caps:   0.04em;   /* small caps headers */
+  --kt-tracking-normal: 0;
+  --kt-tracking-tight:  -0.01em;
+
+  /* ---------------------------------------------------------------------
+     SPACING — 4px base
+     --------------------------------------------------------------------- */
+  --kt-s-0:  0;
+  --kt-s-1:  4px;
+  --kt-s-2:  8px;
+  --kt-s-3:  12px;
+  --kt-s-4:  16px;
+  --kt-s-5:  20px;
+  --kt-s-6:  24px;
+  --kt-s-8:  32px;
+  --kt-s-10: 40px;
+  --kt-s-12: 48px;
+  --kt-s-16: 64px;
+  --kt-s-20: 80px;
+  --kt-s-24: 96px;
+
+  /* ---------------------------------------------------------------------
+     RADIUS — sparing. The brand uses small, technical radii
+     (4–8px on UI; 4px pills on the icon's data bars).
+     --------------------------------------------------------------------- */
+  --kt-r-xs: 2px;
+  --kt-r-sm: 4px;     /* default — buttons, badges, table cells */
+  --kt-r-md: 6px;     /* inputs, small cards */
+  --kt-r-lg: 8px;     /* cards, modals */
+  --kt-r-xl: 12px;    /* hero panels */
+  --kt-r-pill: 999px; /* pills, the data-bar shapes */
+
+  /* ---------------------------------------------------------------------
+     SHADOWS — restrained, professional. No glow.
+     --------------------------------------------------------------------- */
+  --kt-shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --kt-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --kt-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --kt-shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.10), 0 4px 8px rgba(15, 23, 42, 0.04);
+  --kt-shadow-xl: 0 20px 50px rgba(15, 23, 42, 0.12), 0 8px 16px rgba(15, 23, 42, 0.06);
+  --kt-shadow-blue: 0 6px 20px rgba(59, 130, 246, 0.25);   /* on primary CTA */
+
+  /* Inset/divider helpers */
+  --kt-divider: 1px solid var(--kt-border);
+  --kt-divider-strong: 1px solid var(--kt-border-strong);
+
+  /* ---------------------------------------------------------------------
+     MOTION — quick, no bounce. Engineering-grade.
+     --------------------------------------------------------------------- */
+  --kt-ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --kt-ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --kt-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --kt-dur-fast:   120ms;
+  --kt-dur-base:   180ms;
+  --kt-dur-slow:   280ms;
+
+  /* ---------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------- */
+  --kt-container:    1200px;
+  --kt-container-lg: 1320px;
+  --kt-container-sm: 720px;
+}
+
+/* ============================================================
+   BASE ELEMENT STYLES
+   Apply with class="kt" on a wrapper, or scope the system to body.
+   ============================================================ */
+.kt,
+.kt * {
+  box-sizing: border-box;
+}
+
+.kt {
+  font-family: var(--kt-font-sans);
+  font-size: var(--kt-fs-body);
+  line-height: var(--kt-lh-body);
+  color: var(--kt-fg-1);
+  background: var(--kt-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display / Headings */
+.kt-display-xl,
+.kt h1.kt-display-xl {
+  font-size: var(--kt-fs-display-xl);
+  font-weight: var(--kt-w-semibold);
+  line-height: var(--kt-lh-tight);
+  letter-spacing: var(--kt-tracking-tight);
+  color: var(--kt-fg-1);
+}
+.kt-display,
+.kt h1 {
+  font-size: var(--kt-fs-display);
+  font-weight: var(--kt-w-semibold);
+  line-height: var(--kt-lh-tight);
+  letter-spacing: var(--kt-tracking-tight);
+  color: var(--kt-fg-1);
+  margin: 0 0 var(--kt-s-4);
+}
+.kt h2 {
+  font-size: var(--kt-fs-h1);
+  font-weight: var(--kt-w-semibold);
+  line-height: var(--kt-lh-snug);
+  color: var(--kt-fg-1);
+  margin: 0 0 var(--kt-s-3);
+}
+.kt h3 {
+  font-size: var(--kt-fs-h2);
+  font-weight: var(--kt-w-semibold);
+  line-height: var(--kt-lh-snug);
+  color: var(--kt-fg-1);
+  margin: 0 0 var(--kt-s-2);
+}
+.kt h4 {
+  font-size: var(--kt-fs-h3);
+  font-weight: var(--kt-w-semibold);
+  line-height: var(--kt-lh-snug);
+  color: var(--kt-fg-1);
+  margin: 0 0 var(--kt-s-2);
+}
+
+.kt p {
+  font-size: var(--kt-fs-body);
+  line-height: var(--kt-lh-body);
+  color: var(--kt-fg-2);
+  margin: 0 0 var(--kt-s-3);
+}
+
+/* Eyebrow / tag — uppercase, tracked, blue */
+.kt-eyebrow {
+  display: inline-block;
+  font-size: var(--kt-fs-caption);
+  font-weight: var(--kt-w-semibold);
+  letter-spacing: var(--kt-tracking-tag);
+  text-transform: uppercase;
+  color: var(--kt-blue);
+}
+
+/* Caption */
+.kt-caption {
+  font-size: var(--kt-fs-caption);
+  color: var(--kt-fg-3);
+  letter-spacing: var(--kt-tracking-caps);
+}
+
+/* Code / mono */
+.kt code,
+.kt-code {
+  font-family: var(--kt-font-mono);
+  font-size: 0.92em;
+  background: var(--kt-bg-tint);
+  color: var(--kt-navy);
+  padding: 2px 6px;
+  border-radius: var(--kt-r-xs);
+  border: 1px solid var(--kt-border);
+}
+
+/* Links */
+.kt a {
+  color: var(--kt-blue);
+  text-decoration: none;
+  transition: color var(--kt-dur-fast) var(--kt-ease);
+}
+.kt a:hover {
+  color: var(--kt-blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Selection */
+.kt ::selection {
+  background: var(--kt-blue-pale);
+  color: var(--kt-navy);
+}
+
+/* The brand "blue rule" — 3px accent line */
+.kt-rule-blue {
+  display: block;
+  height: 3px;
+  width: 56px;
+  background: var(--kt-blue);
+  border-radius: 2px;
+  border: 0;
+  margin: var(--kt-s-3) 0;
+}
+
+/* The brand vertical separator (used between KORDAS | TECHNOLOGIES) */
+.kt-vbar {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  background: var(--kt-slate-300);
+  margin: 0 var(--kt-s-3);
+  vertical-align: middle;
+}

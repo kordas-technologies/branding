@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Inter,Roboto,Arial,sans-serif;background:#fff;padding:24px;-webkit-font-smoothing:antialiased;}
+.grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;}
+.cell{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border:1px solid #e2e8f0;border-radius:6px;background:#fff;}
+.cell svg{color:#0f172a;}
+.cell span{font-family:'JetBrains Mono',monospace;font-size:9px;color:#64748b;text-align:center;}
+.note{font-size:11px;color:#94a3b8;margin-top:12px;}
+</style></head><body>
+<div class="grid">
+  <div class="cell"><i data-lucide="cpu" width="22" height="22"></i><span>cpu</span></div>
+  <div class="cell"><i data-lucide="bot" width="22" height="22"></i><span>bot</span></div>
+  <div class="cell"><i data-lucide="radio-tower" width="22" height="22"></i><span>radio-tower</span></div>
+  <div class="cell"><i data-lucide="wifi" width="22" height="22"></i><span>wifi</span></div>
+  <div class="cell"><i data-lucide="boxes" width="22" height="22"></i><span>boxes</span></div>
+  <div class="cell"><i data-lucide="code-2" width="22" height="22"></i><span>code-2</span></div>
+  <div class="cell"><i data-lucide="git-branch" width="22" height="22"></i><span>git-branch</span></div>
+  <div class="cell"><i data-lucide="rocket" width="22" height="22"></i><span>rocket</span></div>
+  <div class="cell"><i data-lucide="camera" width="22" height="22"></i><span>camera</span></div>
+  <div class="cell"><i data-lucide="phone" width="22" height="22"></i><span>phone</span></div>
+  <div class="cell"><i data-lucide="mail" width="22" height="22"></i><span>mail</span></div>
+  <div class="cell"><i data-lucide="map-pin" width="22" height="22"></i><span>map-pin</span></div>
+  <div class="cell"><i data-lucide="arrow-right" width="22" height="22"></i><span>arrow-right</span></div>
+  <div class="cell"><i data-lucide="check-circle-2" width="22" height="22" style="color:#16a34a;"></i><span>check</span></div>
+  <div class="cell"><i data-lucide="alert-triangle" width="22" height="22" style="color:#f59e0b;"></i><span>warn</span></div>
+  <div class="cell"><i data-lucide="zap" width="22" height="22" style="color:#3b82f6;"></i><span>zap</span></div>
+</div>
+<div class="note">Lucide — MIT, CDN. Stroke 2px, 24×24 viewBox. Kolor = currentColor (navy lub blue w zależności od kontekstu).</div>
+<script>lucide.createIcons();</script>
+</body></html>
